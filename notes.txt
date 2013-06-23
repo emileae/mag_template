@@ -1,0 +1,70 @@
+notes: iScroll lib for mobile UI
+
+-to prevent page fromscrolling out of view, set bottom position and maybe also adjust it so that none of the page is hidden
+
+-need to initialize each iscroll with a unique var ID and give each scroll wrapper element a unique ID
+
+-check if .page class is required for iScroll
+
+-check if .scroller class is required for iScroll (I think YES)
+
+-works with iScroll4 and Zepto
+
+-need to fix the app when phone goes to sleep mode... the layout breaks, scrolling stops... maybe simplest is to prevent sleep mode using phonegap
+
+-iSCroll lock direction stops horizontal movement when it detects vertical touch gesture like scrolling up/down
+
+-need to figure out how to add widgets, like 3D rotator and video(try video.js)
+
+-SNAP-TO-ELEMENT works as follows: iScroll subdivides the "scroller" into "quadrants" or "pages" the same size as the wrapper.
+
+-NBNB Need to adjust the #pageScroller width by setting the number of pages * wrapperWidth
+
+
+some style and js elements:
+
+to add a popup, include popup.js file, popup trigger takes a class ".popup_trigger"
+child of popup_trigger takes the class ".popup"
+
+Images need to be wrapped in a div with the class wh_img, which gives the image a 25% height, or explicit height needs to be included in style.css
+under the section "/*IMAGE DIMENSIONS BY ID - START*/"
+
+helper classes for text content
+
+.fullw_Auto
+
+.col_left, .col_right
+
+.title_l, .title_m, .title_s
+
+.txt-right, .txt-left, .txt-center (text-align, left, right, center)
+
+.pullout_txt
+
+.caption
+
+.pull-left, .pull-right
+
+.margin-center (margin, left, right auto)
+
+.space_top, .space_bottom (margin-top/margin-bottom 2em)
+
+some colours: .orange, .blue, .green, .pink, .red (background-color: red, green, etc)
+
+
+some classes for mag cover:(appropriate images need to be placed in directory)
+.cover --> wrapper <div> takes the dimensions of window
+
+.cover_background --><img> sets the image background
+
+.cover_logo --> <img>, sets a logo for thepage in top left corner
+
+.page_down --> <img> sets arrow image in bottom right corner
+
+.cover_block --> <div> sets a block that positions text over cover
+	.cover_title --> <div> title text, used with helper class .title_l
+	.cover_text --> <div> minor heading used with .title_s
+
+
+
+

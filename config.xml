@@ -1,0 +1,23 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+    <widget xmlns = "http://www.w3.org/ns/widgets"
+        id        = "mag_template.com.scknss.www"
+        version   = "0.0.1">
+
+    <!-- versionCode is optional and Android only -->
+
+    <name>Mag Template</name>
+
+    <description>
+        MAking a simple magazine template
+    </description>
+
+    <author href="http://www.scknss.com" email="emile@scknss.com">
+        Emile
+    </author>
+    
+    <preference name="orientation" value="portrait" />
+    <preference name="phonegap-version" value="2.8.0" />
+    
+    <access origin="*" />
+    
+</widget>
