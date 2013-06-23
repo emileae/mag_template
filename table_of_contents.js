@@ -7,8 +7,15 @@ $(document).ready(function(){
     
     $('frame').on('touchmove', function(e){
         e.preventDefault();
-        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
-        var x = touch.pageX;
+        var touches = e.changedTouches;
+        for (var i=0; i<touches.length; i++) {
+            var idx = ongoingTouchIndexById(touches[i].identifier);
+            
+            $('#toc_marker_display').html(ongoingTouches[idx].pageX);
+            
+          }
+        //var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        //var x = touch.pageX;
         $('#toc_marker_display').html(x)
     });
     
