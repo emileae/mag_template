@@ -1,6 +1,6 @@
 <?xml version="1.0" encoding="UTF-8" ?>
     <widget xmlns = "http://www.w3.org/ns/widgets"
-        id        = "mag_template.com.scknss.www"
+        id        = "magtemplate.com.scknss.www"
         version   = "0.0.1">
 
     <!-- versionCode is optional and Android only -->
@@ -16,7 +16,7 @@
     </author>
     
     <preference name="orientation" value="portrait" />
-    <preference name="phonegap-version" value="2.8.0" />
+    <preference name="phonegap-version" value="2.7.0" />
     
     <access origin="*" />
     
