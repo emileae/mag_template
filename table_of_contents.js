@@ -4,12 +4,19 @@ $(document).ready(function(){
         
     });
     
-    $('frame').on('touchmove', function(){
+    
+    $('frame').on('touchmove', function(e){
         e.preventDefault();
         var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
         var x = touch.pageX;
         $('#toc_marker_display').html(x)
     });
+    
+    /*
+    $('body').on('mousedown touchstart', function (){
+        alert(e.pageX);
+    });
+    */
     
     $('body').on('tap click', '.toc_marker', function(){
        show_tab();
