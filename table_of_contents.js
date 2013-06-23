@@ -4,16 +4,12 @@ $(document).ready(function(){
         
     });
     
-    
-    text = document.getElementById('toc_marker_display'); // element that can write the x position
-    //$('#toc_marker_display').css('color', 'white');
-    
-    document.getElementsByTagName('body').ontouchmove = function (e)
-    {
-        e.preventDefault(); 
-        e.stopPropagation();
-        text.innerHTML = e.touches[0].clientX; //set the inner html of the text element to be the x position of the touch
-    };
+    $('frame').on('touchmove', function(){
+        e.preventDefault();
+        var touch = e.originalEvent.touches[0] || e.originalEvent.changedTouches[0];
+        var x = touch.pageX;
+        $('#toc_marker_display').html(x)
+    });
     
     $('body').on('tap click', '.toc_marker', function(){
        show_tab();
