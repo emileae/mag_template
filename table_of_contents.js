@@ -10,8 +10,9 @@ $(document).ready(function(){
         touchMoveX = null;
         touchMoveY = null;*/
 
-        $(document).on('touchmove', onTouchMove)
     }
+    
+    $(document).on('touchmove', onTouchMove);
     
     function onTouchMove( event ) {
         touchMoveX = event.originalEvent.touches[0].clientX;
