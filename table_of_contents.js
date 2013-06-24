@@ -3,15 +3,18 @@ $(document).ready(function(){
     var x = document.getElementById("touchmove_track");
     x.innerHTML='touchMoveX';
     
+    var initial_touchX = "";
+    
     $(document).on('touchstart', onTouchStart);
 
     function onTouchStart( event ) {
-        //console.log('touchstart');
 
         touchStartX = event.originalEvent.touches[0].clientX;
         /*touchStartY = event.originalEvent.touches[0].clientY;
         touchMoveX = null;
         touchMoveY = null;*/
+        
+        initial_touchX = touchStartX;
 
     }
     
@@ -20,19 +23,25 @@ $(document).ready(function(){
     function onTouchMove( event ) {
         touchMoveX = event.originalEvent.touches[0].clientX;
         touchMoveY = event.originalEvent.touches[0].clientY;
-        
-        //alert(touchMoveX);
+
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
-        //$('#touchmove_track').html(touchMoveX);
         
-        //$('#toc_icon_hide').html(touchMoveX);
-        //$('#toc_icon_hide').html(touchMoveY);
+        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>50){
+            var left_pos = $('#toc').css('left');
+            var new_left_pos = left_pos + touchMoveX;
+            $('#toc').css('left', new_left_pos);
+        };
 
     }
+    
+    $(document).on('touchend', onTouchEnd);
 
-    /*function onTouchEnd( event ) {
-        //window.unbindEvent( document, 'touchmove', onTouchMove );
+    function onTouchEnd( event ) {
+        
+        initial_touchX = "";
+        
+        /*//window.unbindEvent( document, 'touchmove', onTouchMove );
         if( document.removeEventListener ) {
             document.removeEventListener( 'touchmove', onTouchMove, false );
         }
@@ -43,8 +52,8 @@ $(document).ready(function(){
         // If there was no movement this was a tap
         if( touchMoveX === null && touchMoveY === null ) {
             console.log('tap');
-        }
-    }*/
+        }*/
+    }
     
     
     // ################## END  meny code  ###########
