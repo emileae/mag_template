@@ -2,6 +2,7 @@ $(document).ready(function(){
     
     var toc_pos = $('#toc').position();
     var left_pos = toc_pos.left;
+    var initial_left_pos = toc_pos.left;
     left_pos = parseInt(left_pos);
     
     var x = document.getElementById("touchmove_track");
@@ -47,12 +48,14 @@ $(document).ready(function(){
         if (touchMoveX < initial_touchX){
             new_left_pos -= (touchMoveX-initial_touchX);
             
-            if ((initial_touchX-touchMoveX) > -left_pos){
-                new_left_pos = left_pos;
+            if ((initial_touchX-touchMoveX) > -initial_left_pos){
+                new_left_pos = initial_left_pos;
             };
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
         };
+        
+        left_pos = new_left_pos;
         
     };
     
