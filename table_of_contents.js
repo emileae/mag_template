@@ -1,4 +1,43 @@
 $(document).ready(function(){
+
+    $(document).on('touchstart', onTouchStart);
+
+    function onTouchStart( event ) {
+        touchStartX = event.touches[0].clientX - indentX;
+        touchStartY = event.touches[0].clientY - indentY;
+        touchMoveX = null;
+        touchMoveY = null;
+
+        $(document).on('touchmove', onTouchMove)
+    }
+    
+    function onTouchMove( event ) {
+        touchMoveX = event.touches[0].clientX;
+        touchMoveY = event.touches[0].clientY;
+
+        $('#toc_icon_hide').html(touchMoveX);
+        //$('#toc_icon_hide').html(touchMoveY);
+
+        var swipeMethod = null;
+    }
+
+    /*function onTouchEnd( event ) {
+        //window.unbindEvent( document, 'touchmove', onTouchMove );
+        if( document.removeEventListener ) {
+            document.removeEventListener( 'touchmove', onTouchMove, false );
+        }
+        else {
+            document.detachEvent( 'on' + 'touchmove', onTouchMove );
+        }
+
+        // If there was no movement this was a tap
+        if( touchMoveX === null && touchMoveY === null ) {
+            console.log('tap');
+        }
+    }*/
+    
+    
+    // ################## END  meny code  ###########
     
     var toc_shown = false;
     
@@ -13,7 +52,7 @@ $(document).ready(function(){
     $('body').on('click',function(){
         if (toc_shown){
             //alert('!!');
-            hide_tab();
+            //hide_tab();
         };
     });
     
