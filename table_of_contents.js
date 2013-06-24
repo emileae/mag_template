@@ -32,14 +32,14 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
         
-        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>10){
+        if (touchMoveX > initial_touchX){
             var new_left_pos = left_pos + (touchMoveX-initial_touchX);
-            x.innerHTML = touchMoveX-initial_touchX;
-            if ((touchMoveX-initial_touchX) > left_pos){
-                new_left_pos = -left_pos;
+            
+            if ((touchMoveX-initial_touchX) > -left_pos){
+                new_left_pos = 0;
             };
-            //x.innerHTML=new_left_pos;
-            //$('#toc').css('left', new_left_pos+'px');
+            x.innerHTML=new_left_pos;
+            $('#toc').css('left', new_left_pos+'px');
         };
 
     }
