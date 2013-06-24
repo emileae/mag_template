@@ -18,7 +18,10 @@ $(document).ready(function(){
         touchMoveX = event.originalEvent.touches[0].clientX;
         touchMoveY = event.originalEvent.touches[0].clientY;
         
-        alert(touchMoveX);
+        //alert(touchMoveX);
+        var x = document.getElementById("touchmove_track");
+        x.innerHTML=touchMoveX;
+        //$('#touchmove_track').html(touchMoveX);
         
         //$('#toc_icon_hide').html(touchMoveX);
         //$('#toc_icon_hide').html(touchMoveY);
