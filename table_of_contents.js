@@ -1,7 +1,9 @@
 $(document).ready(function(){
     
+    var left_pos = $('#toc').css('left');
+    
     var x = document.getElementById("touchmove_track");
-    x.innerHTML='touchMoveX';
+    x.innerHTML=left_pos;
     
     var initial_touchX = "";
     
@@ -28,10 +30,8 @@ $(document).ready(function(){
         x.innerHTML=touchMoveX;
         
         if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>50){
-            var left_pos = $('#toc').css('left');
             var new_left_pos = left_pos + touchMoveX;
             //$('#toc').css('left', new_left_pos);
-            $('#toc').css('left', '0%');
             x.innerHTML=new_left_pos;
         };
 
