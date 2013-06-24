@@ -31,7 +31,7 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
         
-        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>50){
+        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX) <= left_pos){
             var new_left_pos = left_pos + touchMoveX;
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
