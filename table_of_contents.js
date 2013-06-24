@@ -32,8 +32,10 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
         
+        var new_left_pos = left_pos + (touchMoveX-initial_touchX);
+        
         if (touchMoveX > initial_touchX){
-            var new_left_pos = left_pos + (touchMoveX-initial_touchX);
+            new_left_pos = left_pos + (touchMoveX-initial_touchX);
             
             if ((touchMoveX-initial_touchX) > -left_pos){
                 new_left_pos = 0;
@@ -41,8 +43,18 @@ $(document).ready(function(){
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
         };
-
-    }
+        
+        if (touchMoveX < initial_touchX){
+            new_left_pos -= (touchMoveX-initial_touchX);
+            
+            if ((initial_touchX-touchMoveX) > -left_pos){
+                new_left_pos = left_pos;
+            };
+            x.innerHTML=new_left_pos;
+            $('#toc').css('left', new_left_pos+'px');
+        };
+        
+    };
     
     $(document).on('touchend', onTouchEnd);
 
