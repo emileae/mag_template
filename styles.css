@@ -248,6 +248,24 @@ font-size:2em;
 font-size:0.75em;
 }
 
+#toc_icon
+{
+position: fixed;
+top: 5px;
+left: 5px;
+z-index: 2000;
+}
+
+#toc
+{
+background-color: rgb(100,100,100);
+position: absolute;
+z-index: 2001;
+height: 100%;
+width: 50%;
+left: -50%;
+}
+
 #toc_tab
 {
 position: absolute;
