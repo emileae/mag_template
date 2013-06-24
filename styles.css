@@ -266,6 +266,17 @@ width: 50%;
 left: -50%;
 }
 
+#touchmove_track
+{
+position: absolute;
+top: 10%;
+left: 10%;
+width: 20%;
+height: 20%;
+background-color: rgb(100,100,100);
+z-index: 3000;
+}
+
 #toc_tab
 {
 position: absolute;

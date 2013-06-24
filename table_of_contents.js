@@ -1,5 +1,8 @@
 $(document).ready(function(){
     
+    var x = document.getElementById("touchmove_track");
+    x.innerHTML='touchMoveX';
+    
     $(document).on('touchstart', onTouchStart);
 
     function onTouchStart( event ) {
