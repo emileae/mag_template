@@ -31,8 +31,11 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
         
-        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX) <= left_pos){
-            var new_left_pos = left_pos + touchMoveX;
+        if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>10){
+            var new_left_pos = left_pos + (touchMoveX-initial_touchX);
+            if ((touchMoveX-initial_touchX) > left_pos){
+                new_left_pos = -left_pos;
+            };
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
         };
