@@ -1,6 +1,8 @@
 $(document).ready(function(){
     
-    var left_pos = $('#toc').css('left');
+    var toc_pos = $('#toc').position();
+    var left_pos = toc_pos.left;
+    left_pos = parseInt(left_pos);
     
     var x = document.getElementById("touchmove_track");
     x.innerHTML=left_pos;
@@ -31,8 +33,8 @@ $(document).ready(function(){
         
         if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>50){
             var new_left_pos = left_pos + touchMoveX;
-            //$('#toc').css('left', new_left_pos);
             x.innerHTML=new_left_pos;
+            $('#toc').css('left', new_left_pos+'px');
         };
 
     }
