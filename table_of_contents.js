@@ -1,19 +1,22 @@
 $(document).ready(function(){
-
+    
     $(document).on('touchstart', onTouchStart);
 
     function onTouchStart( event ) {
-        touchStartX = event.touches[0].clientX - indentX;
-        touchStartY = event.touches[0].clientY - indentY;
-        touchMoveX = null;
-        touchMoveY = null;
+        //console.log('touchstart');
 
-        $(document).on('touchmove', onTouchMove)
+        touchStartX = event.originalEvent.touches[0].clientX;
+        alert(touchStartX);
+        /*touchStartY = event.originalEvent.touches[0].clientY;
+        touchMoveX = null;
+        touchMoveY = null;*/
+
+        //$(document).on('touchmove', onTouchMove)
     }
     
     function onTouchMove( event ) {
-        touchMoveX = event.touches[0].clientX;
-        touchMoveY = event.touches[0].clientY;
+        touchMoveX = event.originalEvent.touches[0].clientX;
+        touchMoveY = event.originalEvent.touches[0].clientY;
 
         $('#toc_icon_hide').html(touchMoveX);
         //$('#toc_icon_hide').html(touchMoveY);
