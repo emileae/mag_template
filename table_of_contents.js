@@ -28,11 +28,11 @@ $(document).ready(function(){
         x.innerHTML=touchMoveX;
         
         if (touchMoveX > initial_touchX && (touchMoveX-initial_touchX)>50){
-            //var left_pos = $('#toc').css('left');
-            //var new_left_pos = left_pos + touchMoveX;
+            var left_pos = $('#toc').css('left');
+            var new_left_pos = left_pos + touchMoveX;
             //$('#toc').css('left', new_left_pos);
             $('#toc').css('left', '0%');
-            alert('moved');
+            x.innerHTML=new_left_pos;
         };
 
     }
