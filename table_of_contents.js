@@ -6,22 +6,22 @@ $(document).ready(function(){
         //console.log('touchstart');
 
         touchStartX = event.originalEvent.touches[0].clientX;
-        alert(touchStartX);
         /*touchStartY = event.originalEvent.touches[0].clientY;
         touchMoveX = null;
         touchMoveY = null;*/
 
-        //$(document).on('touchmove', onTouchMove)
+        $(document).on('touchmove', onTouchMove)
     }
     
     function onTouchMove( event ) {
         touchMoveX = event.originalEvent.touches[0].clientX;
         touchMoveY = event.originalEvent.touches[0].clientY;
-
-        $('#toc_icon_hide').html(touchMoveX);
+        
+        alert(touchMoveX);
+        
+        //$('#toc_icon_hide').html(touchMoveX);
         //$('#toc_icon_hide').html(touchMoveY);
 
-        var swipeMethod = null;
     }
 
     /*function onTouchEnd( event ) {
