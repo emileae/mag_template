@@ -14,6 +14,8 @@ $(document).ready(function(){
     var initial_touchX = "";
     
     $(document).on('touchstart', onTouchStart);
+    $(document).on('touchmove', onTouchMove);
+    $(document).on('touchend', onTouchEnd);
 
     function onTouchStart( event ) {
 
@@ -24,10 +26,7 @@ $(document).ready(function(){
         
         initial_touchX = touchStartX;
         x.innerHTML=touchStartX;
-
     };
-    
-    $(document).on('touchmove', onTouchMove);
     
     function onTouchMove( event ) {
         touchMoveX = event.originalEvent.touches[0].clientX;
@@ -35,9 +34,20 @@ $(document).ready(function(){
 
         var x = document.getElementById("touchmove_track");
         
-        var diff = 0;
+        var diff = touchMoveX - initial_touchX;
         
-        //diff = touchMoveX - initial_touchX;
+        if (diff > 0 && diff > 20){
+            swipe_direction = 'right';
+            show_tab();
+        }else if (diff < 0 && diff < -20){
+            swipe_direction = 'left';
+            hide_tab();
+        }else if (diff == 0){
+            swipe_direction = 'tap';
+        };
+        
+        /*
+        var diff = 0;
         
         if (current_pos < initial_left_pos){
             diff = 0;
@@ -45,9 +55,9 @@ $(document).ready(function(){
         }else if (current_pos >0){
             diff = 0;
             current_pos = 0;
-        }else(
+        }else{
             diff = touchMoveX - initial_touchX
-        );
+        };
         
         current_pos += diff;
         initial_touchX = touchMoveX;
@@ -63,18 +73,16 @@ $(document).ready(function(){
         x.innerHTML=current_pos+'<br>'+diff+'<br>'+swipe_direction;
         
         $('#toc').css('left', current_pos+'px');
-        
+        */
     };
-    
-    $(document).on('touchend', onTouchEnd);
 
     function onTouchEnd( event ) {
         
-        if (current_pos >= initial_left_pos/2 && swipe_direction == 'right'){
+        /*if (current_pos >= initial_left_pos/2 && swipe_direction == 'right'){
             show_tab();
         }else if (current_pos < initial_left_pos/2 && swipe_direction == 'left'){
             hide_tab();
-        };
+        };*/
         
         initial_touchX = "";
     }
