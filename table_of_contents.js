@@ -117,6 +117,7 @@ $(document).ready(function(){
         page1Scroll.scrollToElement('li:nth-child(1)', 100);
         }, 100);
         hide_tab();
+        menu_pos = "closed";
         //meny.close();
     });
     $('#toc_2').on('tap click', function(){
@@ -124,6 +125,7 @@ $(document).ready(function(){
         page1Scroll.scrollToElement('li:nth-child(2)', 100);
         }, 100);
         hide_tab();
+        menu_pos = "closed";
         //meny.close();
     });
     $('#toc_3').on('tap click', function(){
@@ -131,6 +133,7 @@ $(document).ready(function(){
         page1Scroll.scrollToElement('li:nth-child(3)', 100);
         }, 100);
         hide_tab();
+        menu_pos = "closed";
         //meny.close();
     });
 
