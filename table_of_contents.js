@@ -7,7 +7,7 @@ $(document).ready(function(){
     initial_left_pos = parseInt(initial_left_pos);
     
     var x = document.getElementById("touchmove_track");
-    x.innerHTML=left_pos;
+    x.innerHTML=current_pos;
     
     var initial_touchX = "";
     
