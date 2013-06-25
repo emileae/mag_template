@@ -46,44 +46,10 @@ $(document).ready(function(){
         }else if (diff == 0){
             swipe_direction = 'tap';
         };
-        
-        /*
-        var diff = 0;
-        
-        if (current_pos < initial_left_pos){
-            diff = 0;
-            current_pos = initial_left_pos;
-        }else if (current_pos >0){
-            diff = 0;
-            current_pos = 0;
-        }else{
-            diff = touchMoveX - initial_touchX
-        };
-        
-        current_pos += diff;
-        initial_touchX = touchMoveX;
-        
-        if (diff > 0){
-            swipe_direction = 'right'
-        }else if (diff < 0){
-            swipe_direction = 'left'
-        }else if (diff == 0){
-            swipe_direction = 'tap'
-        };
-        
-        x.innerHTML=current_pos+'<br>'+diff+'<br>'+swipe_direction;
-        
-        $('#toc').css('left', current_pos+'px');
-        */
+
     };
 
     function onTouchEnd( event ) {
-        
-        /*if (current_pos >= initial_left_pos/2 && swipe_direction == 'right'){
-            show_tab();
-        }else if (current_pos < initial_left_pos/2 && swipe_direction == 'left'){
-            hide_tab();
-        };*/
         
         initial_touchX = "";
         initial_touchY = "";
@@ -115,6 +81,14 @@ $(document).ready(function(){
         $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
         $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
         $('#toc').css('transition', 'left 0.5s ease-in-out');
+        
+        $('body').append('<div id="full_overlay"></div>');
+        $('#full_overlay').css('background-color', 'rgba(0,0,0,0.8);');
+        $('#toc').css('-moz-transition', 'background-color 0.5s ease-in-out');
+        $('#toc').css('-webkit-transition', 'background-color 0.5s ease-in-out');
+        $('#toc').css('-o-transition', 'background-color 0.5s ease-in-out');
+        $('#toc').css('transition', 'background-color 0.5s ease-in-out');
+        
         toc_shown = true;
         current_pos = 0;
     };
@@ -125,6 +99,9 @@ $(document).ready(function(){
         $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
         $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
         $('#toc').css('transition', 'left 0.5s ease-in-out');
+        
+        $('#full_overlay').remove();
+        
         toc_shown = false;
         current_pos = initial_left_pos;
     };
