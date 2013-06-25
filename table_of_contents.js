@@ -40,7 +40,7 @@ $(document).ready(function(){
             var new_left_pos = current_pos + diff;
             $('#toc').css('left', new_left_pos+'px');
             current_pos = new_left_pos;
-        }else if (initial_touchX > touchMoveX){
+        }else if (initial_touchX >= touchMoveX){
             //move slider left
             var diff = initial_touchX - touchMoveX;
             var new_left_pos = current_pos - diff;
