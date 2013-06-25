@@ -83,11 +83,7 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('body').append('<div id="full_overlay"></div>');
-        $('#full_overlay').css('background-color', 'rgba(0,0,0,0.8);');
-        $('#toc').css('-moz-transition', 'background-color 0.5s ease-in-out');
-        $('#toc').css('-webkit-transition', 'background-color 0.5s ease-in-out');
-        $('#toc').css('-o-transition', 'background-color 0.5s ease-in-out');
-        $('#toc').css('transition', 'background-color 0.5s ease-in-out');
+        $('#full_overlay').css('background-color', 'rgba(0,0,0,0.5);');
         
         toc_shown = true;
         current_pos = 0;
