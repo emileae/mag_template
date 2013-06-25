@@ -83,7 +83,6 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('body').append('<div id="full_overlay"></div>');
-        $('#full_overlay').css('background-color', 'rgba(0,0,0,0.5);');
         
         toc_shown = true;
         current_pos = 0;
