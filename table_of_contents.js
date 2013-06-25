@@ -43,13 +43,13 @@ $(document).ready(function(){
             swipe_direction = 'right';
             if (menu_pos == "closed"){
                 show_tab();
-                //menu_pos = "open";
+                menu_pos = "open";
             };
         }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
             if (menu_pos == "open"){
                 hide_tab();
-                //menu_pos = "closed";
+                menu_pos = "closed";
             };
         }else if (diff == 0){
             swipe_direction = 'tap';
