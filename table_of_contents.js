@@ -8,6 +8,8 @@ $(document).ready(function(){
     
     var swipe_direction = "";
     
+    var menu_pos = "closed";
+    
     //var x = document.getElementById("touchmove_track");
     //x.innerHTML=current_pos;
     
@@ -39,10 +41,16 @@ $(document).ready(function(){
         
         if (diff > 0 && diff > 20 && diffY < 20){
             swipe_direction = 'right';
-            show_tab();
+            if (menu_pos == "closed"){
+                show_tab();
+                menu_pos = "open";
+            };
         }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
-            hide_tab();
+            if (menu_pos == "open"){
+                hide_tab();
+                menu_pos = "closed";
+            };
         }else if (diff == 0){
             swipe_direction = 'tap';
         };
