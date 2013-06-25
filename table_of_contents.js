@@ -36,7 +36,7 @@ $(document).ready(function(){
         var diff = 0;
         
         diff = touchMoveX - initial_touchX;
-        if (current_pos <= initial_left_pos){
+        if (current_pos < initial_left_pos){
             diff = 0;
         }else if (current_pos >=0){
             diff = 0;
