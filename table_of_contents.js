@@ -117,21 +117,21 @@ $(document).ready(function(){
         page1Scroll.scrollToElement('li:nth-child(1)', 100);
         }, 100);
         hide_tab();
-        meny.close();
+        //meny.close();
     });
     $('#toc_2').on('tap click', function(){
         setTimeout(function () {
         page1Scroll.scrollToElement('li:nth-child(2)', 100);
         }, 100);
         hide_tab();
-        meny.close();
+        //meny.close();
     });
     $('#toc_3').on('tap click', function(){
         setTimeout(function () {
         page1Scroll.scrollToElement('li:nth-child(3)', 100);
         }, 100);
         hide_tab();
-        meny.close();
+        //meny.close();
     });
 
 
