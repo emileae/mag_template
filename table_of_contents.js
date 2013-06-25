@@ -6,6 +6,8 @@ $(document).ready(function(){
     current_pos = parseInt(current_pos);
     initial_left_pos = parseInt(initial_left_pos);
     
+    var swipe_direction = "";
+    
     var x = document.getElementById("touchmove_track");
     x.innerHTML=current_pos;
     
@@ -50,7 +52,15 @@ $(document).ready(function(){
         current_pos += diff;
         initial_touchX = touchMoveX;
         
-        x.innerHTML=current_pos+'<br>'+diff;
+        if (diff > 0){
+            swipe_direction = 'right'
+        }else if (diff < 0){
+            swipe_direction = 'left'
+        }else if (diff == 0){
+            swipe_direction = 'tap'
+        };
+        
+        x.innerHTML=current_pos+'<br>'+diff+'<br>'+swipe_direction;
         
         $('#toc').css('left', current_pos+'px');
         
@@ -59,6 +69,12 @@ $(document).ready(function(){
     $(document).on('touchend', onTouchEnd);
 
     function onTouchEnd( event ) {
+        
+        if (current_pos >= initial_left_pos/2 && swipe_direction == 'right'){
+            show_tab();
+        }else if (current_pos < initial_left_pos/2 && swipe_direction == 'left'){
+            hide_tab();
+        };
         
         initial_touchX = "";
     }
@@ -90,6 +106,7 @@ $(document).ready(function(){
         $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         toc_shown = true;
+        current_pos = 0;
     };
     
     function hide_tab(){
@@ -99,6 +116,7 @@ $(document).ready(function(){
         $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         toc_shown = false;
+        current_pos = initial_left_pos;
     };
     
     
