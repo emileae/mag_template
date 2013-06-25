@@ -35,14 +35,18 @@ $(document).ready(function(){
         
         var diff = 0;
         
-        diff = touchMoveX - initial_touchX;
+        //diff = touchMoveX - initial_touchX;
+        
         if (current_pos < initial_left_pos){
             diff = 0;
             current_pos = initial_left_pos;
         }else if (current_pos >0){
             diff = 0;
             current_pos = 0;
-        };
+        }else(
+            diff = touchMoveX - initial_touchX
+        );
+        
         current_pos += diff;
         initial_touchX = touchMoveX;
         
@@ -50,49 +54,6 @@ $(document).ready(function(){
         
         $('#toc').css('left', current_pos+'px');
         
-        /*
-        if (touchMoveX > initial_touchX){
-            //move slider right
-            diff = touchMoveX - initial_touchX;
-            //var new_left_pos = current_pos + diff;
-            //$('#toc').css('left', new_left_pos+'px');
-            //current_pos = new_left_pos;
-        }else if (initial_touchX >= touchMoveX){
-            //move slider left
-            diff = initial_touchX - touchMoveX;
-            //var new_left_pos = current_pos - diff;
-            //$('#toc').css('left', new_left_pos+'px');
-            //current_pos = new_left_pos;
-        };
-        */
-        
-        
-        /*
-        var new_left_pos = current_pos + (touchMoveX-initial_touchX);
-        
-        if (touchMoveX > initial_touchX){
-            
-            if ((touchMoveX-initial_touchX) > -initial_left_pos){
-                new_left_pos = 0;
-            }else{
-                new_left_pos = current_pos + (touchMoveX-initial_touchX);
-            };
-            x.innerHTML=touchMoveX-initial_touchX;
-            $('#toc').css('left', new_left_pos+'px');
-            current_pos = new_left_pos;
-
-        
-        }else if (touchMoveX < initial_touchX){
-            new_left_pos = current_pos - (initial_touchX-touchMoveX);
-            
-            if ((initial_touchX-touchMoveX) > -initial_left_pos){
-                new_left_pos = initial_left_pos;
-            };
-            x.innerHTML=touchMoveX-initial_touchX;
-            $('#toc').css('left', new_left_pos+'px');
-            current_pos = new_left_pos;
-        };
-        */
     };
     
     $(document).on('touchend', onTouchEnd);
@@ -100,19 +61,6 @@ $(document).ready(function(){
     function onTouchEnd( event ) {
         
         initial_touchX = "";
-        
-        /*//window.unbindEvent( document, 'touchmove', onTouchMove );
-        if( document.removeEventListener ) {
-            document.removeEventListener( 'touchmove', onTouchMove, false );
-        }
-        else {
-            document.detachEvent( 'on' + 'touchmove', onTouchMove );
-        }
-
-        // If there was no movement this was a tap
-        if( touchMoveX === null && touchMoveY === null ) {
-            console.log('tap');
-        }*/
     }
     
     
