@@ -12,6 +12,7 @@ $(document).ready(function(){
     x.innerHTML=current_pos;
     
     var initial_touchX = "";
+    var initial_touchY = "";
     
     $(document).on('touchstart', onTouchStart);
     $(document).on('touchmove', onTouchMove);
@@ -20,11 +21,10 @@ $(document).ready(function(){
     function onTouchStart( event ) {
 
         touchStartX = event.originalEvent.touches[0].clientX;
-        /*touchStartY = event.originalEvent.touches[0].clientY;
-        touchMoveX = null;
-        touchMoveY = null;*/
+        touchStartY = event.originalEvent.touches[0].clientY;
         
         initial_touchX = touchStartX;
+        initial_touchY = touchStartY;
         x.innerHTML=touchStartX;
     };
     
@@ -35,11 +35,12 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         
         var diff = touchMoveX - initial_touchX;
+        var diffY = Math.abs(touchMoveY - initial_touchY);
         
-        if (diff > 0 && diff > 20){
+        if (diff > 0 && diff > 20 && diffY < 20){
             swipe_direction = 'right';
             show_tab();
-        }else if (diff < 0 && diff < -20){
+        }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
             hide_tab();
         }else if (diff == 0){
@@ -85,6 +86,7 @@ $(document).ready(function(){
         };*/
         
         initial_touchX = "";
+        initial_touchY = "";
     }
     
     
