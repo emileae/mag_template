@@ -32,19 +32,19 @@ $(document).ready(function(){
         touchMoveY = event.originalEvent.touches[0].clientY;
 
         var x = document.getElementById("touchmove_track");
-        x.innerHTML=touchMoveX-initial_touchX;
+        x.innerHTML=current_pos;
         
         if (touchMoveX > initial_touchX){
             //move slider right
             var diff = touchMoveX - initial_touchX;
             var new_left_pos = current_pos + diff;
-            $('#toc').css('left', new_left_pos+'px');
+            //$('#toc').css('left', new_left_pos+'px');
             current_pos = new_left_pos;
         }else if (initial_touchX >= touchMoveX){
             //move slider left
             var diff = initial_touchX - touchMoveX;
             var new_left_pos = current_pos - diff;
-            $('#toc').css('left', new_left_pos+'px');
+            //$('#toc').css('left', new_left_pos+'px');
             current_pos = new_left_pos;
         };
         
