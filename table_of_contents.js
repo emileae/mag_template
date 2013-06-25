@@ -37,6 +37,7 @@ $(document).ready(function(){
         
         diff = touchMoveX - initial_touchX;
         current_pos += diff;
+        initial_touchX = touchMoveX;
         
         x.innerHTML=current_pos+'<br>'+diff;
         
