@@ -1,9 +1,10 @@
 $(document).ready(function(){
     
     var toc_pos = $('#toc').position();
-    var left_pos = toc_pos.left;
+    var current_pos = toc_pos.left;
     var initial_left_pos = toc_pos.left;
-    left_pos = parseInt(left_pos);
+    current_pos = parseInt(current_pos);
+    initial_left_pos = parseInt(initial_left_pos);
     
     var x = document.getElementById("touchmove_track");
     x.innerHTML=left_pos;
@@ -33,29 +34,30 @@ $(document).ready(function(){
         var x = document.getElementById("touchmove_track");
         x.innerHTML=touchMoveX;
         
-        var new_left_pos = left_pos + (touchMoveX-initial_touchX);
+        var new_left_pos = current_pos + (touchMoveX-initial_touchX);
         
         if (touchMoveX > initial_touchX){
-            new_left_pos = left_pos + (touchMoveX-initial_touchX);
             
-            if ((touchMoveX-initial_touchX) > -left_pos){
+            if ((touchMoveX-initial_touchX) > -initial_left_pos){
                 new_left_pos = 0;
+            }else{
+                new_left_pos = current_pos + (touchMoveX-initial_touchX);
             };
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
-        };
+            current_pos = new_left_pos;
+
         
-        if (touchMoveX < initial_touchX){
-            new_left_pos -= (touchMoveX-initial_touchX);
+        }else if (touchMoveX < initial_touchX){
+            new_left_pos = current_pos - (initial_touchX-touchMoveX);
             
             if ((initial_touchX-touchMoveX) > -initial_left_pos){
                 new_left_pos = initial_left_pos;
             };
             x.innerHTML=new_left_pos;
             $('#toc').css('left', new_left_pos+'px');
+            current_pos = new_left_pos;
         };
-        
-        left_pos = new_left_pos;
         
     };
     
