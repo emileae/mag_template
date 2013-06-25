@@ -8,8 +8,8 @@ $(document).ready(function(){
     
     var swipe_direction = "";
     
-    var x = document.getElementById("touchmove_track");
-    x.innerHTML=current_pos;
+    //var x = document.getElementById("touchmove_track");
+    //x.innerHTML=current_pos;
     
     var initial_touchX = "";
     var initial_touchY = "";
@@ -25,14 +25,14 @@ $(document).ready(function(){
         
         initial_touchX = touchStartX;
         initial_touchY = touchStartY;
-        x.innerHTML=touchStartX;
+        //x.innerHTML=touchStartX;
     };
     
     function onTouchMove( event ) {
         touchMoveX = event.originalEvent.touches[0].clientX;
         touchMoveY = event.originalEvent.touches[0].clientY;
 
-        var x = document.getElementById("touchmove_track");
+        //var x = document.getElementById("touchmove_track");
         
         var diff = touchMoveX - initial_touchX;
         var diffY = Math.abs(touchMoveY - initial_touchY);
