@@ -43,13 +43,13 @@ $(document).ready(function(){
             swipe_direction = 'right';
             if (menu_pos == "closed"){
                 show_tab();
-                menu_pos = "open";
+                //menu_pos = "open";
             };
         }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
             if (menu_pos == "open"){
                 hide_tab();
-                menu_pos = "closed";
+                //menu_pos = "closed";
             };
         }else if (diff == 0){
             swipe_direction = 'tap';
@@ -70,10 +70,12 @@ $(document).ready(function(){
     
     $('body').on('tap click', '#toc_icon', function(){
         show_tab();
+       // menu_pos == "open"
     });
     
     $('body').on('tap click', '#toc_icon_hide', function(){
         hide_tab();
+        //menu_pos == "closed"
     });
     
     $('body').on('click',function(){
@@ -91,7 +93,7 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('body').append('<div id="full_overlay"></div>');
-        
+        menu_pos == "open";
         toc_shown = true;
         current_pos = 0;
     };
@@ -104,7 +106,7 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('#full_overlay').remove();
-        
+        menu_pos == "closed";
         toc_shown = false;
         current_pos = initial_left_pos;
     };
