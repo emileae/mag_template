@@ -4,7 +4,7 @@ var knownfiles = [];
 var filename = "";
 var foldername = ""
 
-localStorage.issue_list = 1;
+//localStorage.issue_list = 1;
 
 //Loaded my file system, now let's get a directory entry for where I'll store my crap    
 function onFSSuccess(fileSystem) {
@@ -57,6 +57,7 @@ function onDeviceReady() {
 }
 
 function download_handler(issue){
+    alert('download handler'+issue);
     foldername = issue;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
 };
