@@ -117,15 +117,25 @@ function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
 };
 
+function set_issue_list(){
+    for(var i = 0; i< localStorage.issue_list; i++){
+        $('#issue_container').append('<div id="issue_'+i+'">Download Issue '+i+'</div>');
+    };
+};
+
 
 $(document).ready(function(){
-
+    
+    set_issue_list();
+    
     $('body').on('click tap', '#get_issues_btn', function(){
         //alert('yoyo');
         $.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
             var latest_issue = parseInt(data['issue_num'])
             localStorage.issue_list = latest_issue;
             alert(localStorage.issue_list);
+            set_issue_list();
+            $('#get_issues_btn').hide();
         });
     
     });
