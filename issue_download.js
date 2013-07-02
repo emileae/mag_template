@@ -119,7 +119,7 @@ function init() {
 };
 
 function set_issue_list(){
-    for(var i = 0; i< localStorage.issue_list; i++){
+    for(var i = 0; i<= localStorage.issue_list; i++){
         $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
     };
 };
