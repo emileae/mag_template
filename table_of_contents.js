@@ -1,5 +1,5 @@
 $(document).ready(function(){
-    
+
     var toc_pos = $('#toc').position();
     var current_pos = toc_pos.left;
     var initial_left_pos = toc_pos.left;
