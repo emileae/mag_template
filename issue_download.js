@@ -101,7 +101,7 @@ function readAsText(file) {
     var reader = new FileReader();
     reader.onloadend = function(evt) {
         alert(evt.target.result);
-        $('#photos').html(evt.target.result);
+        $('.scroller').html(evt.target.result);
         
         var imgs = document.getElementsByTagName("img");
         for(var i = 0; i < imgs.length; i++){
@@ -119,7 +119,8 @@ function init() {
 
 function set_issue_list(){
     for(var i = 0; i< localStorage.issue_list; i++){
-        $('#issue_container').append('<div id="issue_'+i+'">Download Issue '+i+'</div>');
+        $('#issue_container').html("");
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
     };
 };
 
@@ -137,7 +138,14 @@ $(document).ready(function(){
             set_issue_list();
             $('#get_issues_btn').hide();
         });
+    });
     
+    $('body').on('tap click', '.issue_download', function(){
+        var div_id = $(this).attr('id');
+        var issue = div_id.slice(6);
+        
+        download_handler(issue);
+        
     });
 
 });
