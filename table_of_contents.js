@@ -1,14 +1,24 @@
+var current_pos = toc_pos.left;
+var initial_left_pos = toc_pos.left;
+current_pos = parseInt(current_pos);
+initial_left_pos = parseInt(initial_left_pos);
+
+var swipe_direction = "";
+
+var menu_pos = "closed";
+var toc_shown = false;
+
 $(document).ready(function(){
 
     var toc_pos = $('#toc').position();
-    var current_pos = toc_pos.left;
+    /*var current_pos = toc_pos.left;
     var initial_left_pos = toc_pos.left;
     current_pos = parseInt(current_pos);
     initial_left_pos = parseInt(initial_left_pos);
     
     var swipe_direction = "";
     
-    var menu_pos = "closed";
+    var menu_pos = "closed";*/
     
     //var x = document.getElementById("touchmove_track");
     //x.innerHTML=current_pos;
@@ -66,7 +76,7 @@ $(document).ready(function(){
     
     // ################## END  meny code  ###########
     
-    var toc_shown = false;
+    //var toc_shown = false;
     
     $('body').on('tap click', '#toc_icon', function(){
         show_tab();
@@ -85,7 +95,7 @@ $(document).ready(function(){
         };
     });
     
-    function show_tab(){
+    /*function show_tab(){
         $('#toc').css('left', '0%');
         $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
         $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
@@ -109,7 +119,7 @@ $(document).ready(function(){
         menu_pos == "closed";
         toc_shown = false;
         current_pos = initial_left_pos;
-    };
+    };*/
     
     
     $('#toc_1').on('tap click', function(){
@@ -139,3 +149,31 @@ $(document).ready(function(){
 
 
 });
+
+function show_tab(){
+    $('#toc').css('left', '0%');
+    $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('transition', 'left 0.5s ease-in-out');
+    
+    $('body').append('<div id="full_overlay"></div>');
+    menu_pos == "open";
+    toc_shown = true;
+    current_pos = 0;
+};
+
+function hide_tab(){
+    $('#toc').css('left', '-50%');
+    $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('transition', 'left 0.5s ease-in-out');
+    
+    $('#full_overlay').remove();
+    menu_pos == "closed";
+    toc_shown = false;
+    current_pos = initial_left_pos;
+};
+
+
