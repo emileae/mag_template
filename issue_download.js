@@ -116,6 +116,7 @@ function readAsText(file) {
            //alert(imgs[i].src);
         }
         
+        /*
         //some repeated code... fix
         $('#toc').css('left', '-50%');
         $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
@@ -127,7 +128,7 @@ function readAsText(file) {
         menu_pos = "closed";
         toc_shown = false;
         current_pos = initial_left_pos;
-
+        */
     };
     reader.readAsText(file);
 }
