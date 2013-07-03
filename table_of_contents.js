@@ -85,7 +85,7 @@ $(document).ready(function(){
         };
     });
     
-    /*function show_tab(){
+    function show_tab(){
         $('#toc').css('left', '0%');
         $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
         $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
@@ -93,7 +93,7 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('body').append('<div id="full_overlay"></div>');
-        menu_pos = "open";
+        menu_pos == "open";
         toc_shown = true;
         current_pos = 0;
     };
@@ -106,10 +106,10 @@ $(document).ready(function(){
         $('#toc').css('transition', 'left 0.5s ease-in-out');
         
         $('#full_overlay').remove();
-        menu_pos = "closed";
+        menu_pos == "closed";
         toc_shown = false;
         current_pos = initial_left_pos;
-    };*/
+    };
     
     
     $('#toc_1').on('tap click', function(){
@@ -139,29 +139,3 @@ $(document).ready(function(){
 
 
 });
-
-    function show_tab(){
-        $('#toc').css('left', '0%');
-        $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('transition', 'left 0.5s ease-in-out');
-        
-        $('body').append('<div id="full_overlay"></div>');
-        menu_pos = "open";
-        toc_shown = true;
-        current_pos = 0;
-    };
-    
-    function hide_tab(){
-        $('#toc').css('left', '-50%');
-        $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
-        $('#toc').css('transition', 'left 0.5s ease-in-out');
-        
-        $('#full_overlay').remove();
-        menu_pos = "closed";
-        toc_shown = false;
-        current_pos = initial_left_pos;
-    };
