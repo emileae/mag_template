@@ -116,7 +116,17 @@ function readAsText(file) {
            //alert(imgs[i].src);
         }
         
-        hide_tab();
+        //some repeated code... fix
+        $('#toc').css('left', '-50%');
+        $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
+        $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
+        $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
+        $('#toc').css('transition', 'left 0.5s ease-in-out');
+        
+        $('#full_overlay').remove();
+        menu_pos = "closed";
+        toc_shown = false;
+        current_pos = initial_left_pos;
 
     };
     reader.readAsText(file);
