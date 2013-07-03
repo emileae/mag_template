@@ -11,24 +11,24 @@ var foldername = ""
 
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
-    alert('find or create Directory'+'-'+foldername);
+    //alert('find or create Directory'+'-'+foldername);
     fileSystem.root.getDirectory("Android/data/iab.com.scknss.www",{create:true, exclusive: false}, function(appID){
         appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError)
     },onError);
 }
 
 function madeDir(d){
-    alert('found/made Directory'+'-'+foldername);
+    //alert('found/made Directory'+'-'+foldername);
     DATADIR = d;
     var reader = DATADIR.createReader();
     reader.readEntries(function(d){
-        alert('done with dirs'+'-'+foldername);
+        //alert('done with dirs'+'-'+foldername);
         gotFileEntries(d);
     },onError);
 };
 
 function gotFileEntries(fileEntries) {
-    alert("The dir has "+fileEntries.length+" entries."+'-'+foldername);
+    //alert("The dir has "+fileEntries.length+" entries."+'-'+foldername);
 
     var file_in_dir = false;
     
@@ -50,8 +50,8 @@ function gotFileEntries(fileEntries) {
 
 function onError(e){
     alert("ERROR");
-    alert(e.target.error.code);
-    alert(JSON.stringify(e));
+    //alert(e.target.error.code);
+    //alert(JSON.stringify(e));
 }
 
 function onDeviceReady() {
@@ -60,13 +60,13 @@ function onDeviceReady() {
 }
 
 function download_handler(issue){
-    alert('download handler'+issue);
+    //alert('download handler'+issue);
     foldername = issue;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
 };
 
 function download_issue_files(issue){
-    alert('getting file dict to download');
+    //alert('getting file dict to download');
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
         //function(data){returns list of files to download}
         for (var key in data) {
@@ -84,24 +84,24 @@ function download_issue_files(issue){
 };
 
 function render_issue(foldername){
-    alert('should render '+foldername);
-    alert('dir: '+DATADIR.fullPath);
+    //alert('should render '+foldername);
+    //alert('dir: '+DATADIR.fullPath);
     DATADIR.getFile("index.html", {}, gotFileEntry, onError);
 };
 
 function gotFileEntry(fileEntry) {
-    alert('gotfileentry');
+    //alert('gotfileentry');
     fileEntry.file(gotFile, onError);
 }
 
 function gotFile(file){
     //readDataUrl(file);
-    alert('gotfile');
+    //alert('gotfile');
     readAsText(file);
 }
 
 function readAsText(file) {
-    alert("Read as text");
+    //alert("Read as text");
     var reader = new FileReader();
     reader.onloadend = function(evt) {
         alert(evt.target.result);
@@ -111,7 +111,7 @@ function readAsText(file) {
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
-           alert(imgs[i].src);
+           //alert(imgs[i].src);
         }
     };
     reader.readAsText(file);
@@ -141,7 +141,7 @@ $(document).ready(function(){
         $.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
             var latest_issue = parseInt(data['issue_num'])
             localStorage.issue_list = latest_issue;
-            alert(localStorage.issue_list);
+            //alert(localStorage.issue_list);
             
             $('#issue_container').html("");
             set_issue_list();
@@ -151,13 +151,11 @@ $(document).ready(function(){
     });
     
     $('body').on('tap click', '.issue_download', function(){
-        
-        alert('tapped');
     
         var div_id = $(this).attr('id');
         var issue = div_id.slice(6);
         
-        alert(issue);
+        alert('issue number: '+issue);
         
         download_handler(issue);
         
