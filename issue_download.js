@@ -107,7 +107,6 @@ function readAsText(file) {
         alert(evt.target.result);
         
         $('.scroller').html(evt.target.result);
-        hide_tab();
         
         var imgs = document.getElementsByTagName("img");
         
@@ -116,6 +115,8 @@ function readAsText(file) {
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            //alert(imgs[i].src);
         }
+        
+        hide_tab();
 
     };
     reader.readAsText(file);
