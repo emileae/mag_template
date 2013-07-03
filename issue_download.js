@@ -113,9 +113,9 @@ function readAsText(file) {
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            //alert(imgs[i].src);
         }
+        hide_tab();
     };
     reader.readAsText(file);
-    hide_tab();
 }
 //only add download buttons once device is ready
 function init() {
