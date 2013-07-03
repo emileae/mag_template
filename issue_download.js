@@ -1,3 +1,5 @@
+// -- downloading files based on a file list that is requested from an external server and storing files on device for later viewing
+
 //Global instance of DirectoryEntry for our data
 var DATADIR;
 var knownfiles = []; 
@@ -6,7 +8,8 @@ var foldername = ""
 
 //localStorage.issue_list = 1;
 
-//Loaded my file system, now let's get a directory entry for where I'll store my crap    
+
+//A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
     alert('find or create Directory'+'-'+foldername);
     fileSystem.root.getDirectory("Android/data/iab.com.scknss.www",{create:true, exclusive: false}, function(appID){
@@ -112,8 +115,9 @@ function readAsText(file) {
         }
     };
     reader.readAsText(file);
+    hide_tab();
 }
-
+//only add download buttons once device is ready
 function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
 };
