@@ -104,7 +104,7 @@ function readAsText(file) {
     //alert("Read as text");
     var reader = new FileReader();
     reader.onloadend = function(evt) {
-        alert(evt.target.result);
+        //alert(evt.target.result);
         
         $('.scroller').html(evt.target.result);
         pageScroll.refresh();
@@ -122,17 +122,8 @@ function readAsText(file) {
 }
 
 function close_menu(){
-    /*$('#toc').css('left', '-50%');
-    $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
-    $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
-    $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
-    $('#toc').css('transition', 'left 0.5s ease-in-out');
-    
-    $('#full_overlay').remove();
-    menu_pos = "closed";
-    toc_shown = false;
-    current_pos = initial_left_pos;*/
     hide_tab();
+    //table_of_contents script needs to be at bottom of html body instead of in document ready...
 };
 
 //only add download buttons once device is ready
@@ -173,7 +164,7 @@ $(document).ready(function(){
         var div_id = $(this).attr('id');
         var issue = div_id.slice(6);
         
-        alert('issue number: '+issue);
+        //alert('issue number: '+issue);
         
         download_handler(issue);
         hide_tab();
