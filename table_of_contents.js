@@ -7,7 +7,7 @@ var menu_pos = "closed";
 var toc_shown = false;
 
 
-$(document).ready(function(){
+//$(document).ready(function(){
 
     /*var toc_pos = $('#toc').position();
     var current_pos = toc_pos.left;
@@ -147,6 +147,6 @@ $(document).ready(function(){
     });
 
 
-});
+//});
 
 
