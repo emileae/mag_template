@@ -122,7 +122,7 @@ function readAsText(file) {
 }
 
 function close_menu(){
-    $('#toc').css('left', '-50%');
+    /*$('#toc').css('left', '-50%');
     $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
     $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
     $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
@@ -131,8 +131,8 @@ function close_menu(){
     $('#full_overlay').remove();
     menu_pos = "closed";
     toc_shown = false;
-    current_pos = initial_left_pos;
-    
+    current_pos = initial_left_pos;*/
+    hide_tab();
 };
 
 //only add download buttons once device is ready
