@@ -107,6 +107,7 @@ function readAsText(file) {
         alert(evt.target.result);
         
         $('.scroller').html(evt.target.result);
+        pageScroll.refresh();
         
         var imgs = document.getElementsByTagName("img");
         
