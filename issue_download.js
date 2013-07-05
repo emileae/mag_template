@@ -114,8 +114,8 @@ function readAsText(file) {
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            //alert(imgs[i].src);
+           alert('close menu');
         }
-        
     };
     reader.readAsText(file);
 }
@@ -162,7 +162,6 @@ $(document).ready(function(){
         download_handler(issue);
         hide_tab();
     });
-
 });
 
 
