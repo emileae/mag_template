@@ -1,15 +1,23 @@
+var toc_pos = $('#toc').position();
+var current_pos = toc_pos.left;
+var initial_left_pos = toc_pos.left;
+current_pos = parseInt(current_pos);
+initial_left_pos = parseInt(initial_left_pos);
+var menu_pos = "closed";
+var toc_shown = false;
+
 
 $(document).ready(function(){
 
-    var toc_pos = $('#toc').position();
+    /*var toc_pos = $('#toc').position();
     var current_pos = toc_pos.left;
     var initial_left_pos = toc_pos.left;
     current_pos = parseInt(current_pos);
-    initial_left_pos = parseInt(initial_left_pos);
+    initial_left_pos = parseInt(initial_left_pos);*/
     
     var swipe_direction = "";
     
-    var menu_pos = "closed";
+    /*var menu_pos = "closed";*/
     
     //var x = document.getElementById("touchmove_track");
     //x.innerHTML=current_pos;
@@ -67,7 +75,7 @@ $(document).ready(function(){
     
     // ################## END  meny code  ###########
     
-    var toc_shown = false;
+    /*var toc_shown = false;*/
     
     $('body').on('tap click', '#toc_icon', function(){
         show_tab();

@@ -115,11 +115,26 @@ function readAsText(file) {
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            //alert(imgs[i].src);
-           alert('close menu');
+           close_menu();
         }
     };
     reader.readAsText(file);
 }
+
+function close_menu(){
+    $('#toc').css('left', '-50%');
+    $('#toc').css('-moz-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-webkit-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('-o-transition', 'left 0.5s ease-in-out');
+    $('#toc').css('transition', 'left 0.5s ease-in-out');
+    
+    $('#full_overlay').remove();
+    menu_pos = "closed";
+    toc_shown = false;
+    current_pos = initial_left_pos;
+    
+};
+
 //only add download buttons once device is ready
 function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
