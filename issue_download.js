@@ -4,7 +4,8 @@
 var DATADIR;
 var knownfiles = []; 
 var filename = "";
-var foldername = ""
+var foldername = "";
+var downloaded_issues = [];
 
 //localStorage.issue_list = 1;
 
@@ -75,7 +76,8 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 //alert("downloading crap to " + dlPath);
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(e){
-                
+                    downloaded_issues.push(issue.toString());// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
+                    localStorage.issues_downloaded(JSON.stringify(downloaded_issues));
                 })
             }
         };
@@ -133,7 +135,16 @@ function init() {
 
 function set_issue_list(){
     for(var i = 0; i<= localStorage.issue_list; i++){
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
+        var downloaded_issues = JSON.parse(localStorage.issues_downloaded);
+        var string_issue = i.toString();
+        if ($.inArray(string_issue, downloaded_issues) > -1 ){
+            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
+        }else{
+            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        };
+        
+        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
     };
 };
 
