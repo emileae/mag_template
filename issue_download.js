@@ -5,7 +5,6 @@ var DATADIR;
 var knownfiles = []; 
 var filename = "";
 var foldername = "";
-var downloaded_issues = [];
 
 //localStorage.issue_list = 1;
 
@@ -76,8 +75,18 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 //alert("downloading crap to " + dlPath);
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(e){
-                    downloaded_issues.push(issue.toString());// !!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!!
-                    localStorage.issues_downloaded(JSON.stringify(downloaded_issues));
+                    if (localStorage.issuesdownloaded){
+                        var issues_downloaded = JSON.parse(localStorage.issuesdownloaded);
+                        issues_downloaded.push(issue);
+                        localStorage.issuesdownloaded = JSON.stringify(issues_downloaded);
+                    }else if (!localStorage.issuesdownloaded){
+                        var to_local_storage = []
+                        var issues_downloaded = to_local_storage;
+                        issues_downloaded.push(issue);
+                        localStorage.issuesdownloaded = JSON.stringify(issues_downloaded);
+                    };
+                    
+                    //localStorage.issuesdownloaded(JSON.stringify(downloaded_issues));
                 })
             }
         };
@@ -136,7 +145,7 @@ function init() {
 function set_issue_list(){
     for(var i = 0; i<= localStorage.issue_list; i++){
         //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
-        var downloaded_issues = JSON.parse(localStorage.issues_downloaded);
+        var downloaded_issues = JSON.parse(localStorage.issuesdownloaded);
         var string_issue = i.toString();
         if ($.inArray(string_issue, downloaded_issues) > -1 ){
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
