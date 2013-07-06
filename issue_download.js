@@ -74,8 +74,8 @@ function download_issue_files(issue){
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
                 //alert("downloading crap to " + dlPath);
-                ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(e){
-                    if (localStorage.issuesdownloaded){
+                ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
+                    /*if (localStorage.issuesdownloaded){
                         var issues_downloaded = JSON.parse(localStorage.issuesdownloaded);
                         issues_downloaded.push(issue);
                         localStorage.issuesdownloaded = JSON.stringify(issues_downloaded);
@@ -87,9 +87,10 @@ function download_issue_files(issue){
                         localStorage.issuesdownloaded = JSON.stringify(issues_downloaded);
                         alert(issues_downloaded);
                     };
-
+                    */
+                    alert('downloaded');
                     //localStorage.issuesdownloaded(JSON.stringify(downloaded_issues));
-                })
+                },onError);
             }
         };
         render_issue(foldername);
