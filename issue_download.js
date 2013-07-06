@@ -88,7 +88,7 @@ function download_issue_files(issue){
                         alert(issues_downloaded);
                     };
                     */
-                    alert('downloaded');
+                    
                     //localStorage.issuesdownloaded(JSON.stringify(downloaded_issues));
                 },onError);
             }
@@ -98,6 +98,7 @@ function download_issue_files(issue){
 };
 
 function render_issue(foldername){
+    alert('downloaded');
     //alert('should render '+foldername);
     //alert('dir: '+DATADIR.fullPath);
     DATADIR.getFile("index.html", {}, gotFileEntry, onError);
