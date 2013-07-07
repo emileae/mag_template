@@ -44,6 +44,8 @@ function gotFileEntries(fileEntries) {
     if (!file_in_dir){
         if (setting_issue_list){
             $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
+            setting_issue_list = false;
+            alert('download');
         }else{
             download_issue_files(foldername);
         };
@@ -51,6 +53,8 @@ function gotFileEntries(fileEntries) {
     }else{
         if (setting_issue_list){
             $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
+            setting_issue_list = false;
+            alert('downloaded');
         }else{
             render_issue(foldername);
         };
@@ -169,7 +173,7 @@ function set_issue_list(){
         };*/
         
         
-        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
 
         setting_issue_list = true;
         download_handler(i);
