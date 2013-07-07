@@ -5,6 +5,7 @@ var DATADIR;
 var knownfiles = []; 
 var filename = "";
 var foldername = "";
+var setting_issue_list = false;
 
 //localStorage.issue_list = 1;
 
@@ -41,9 +42,19 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
-        download_issue_files(foldername)
+        if (setting_issue_list){
+            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
+        }else{
+            download_issue_files(foldername);
+        };
+        //download_issue_files(foldername);
     }else{
-        render_issue(foldername);
+        if (setting_issue_list){
+            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
+        }else{
+            render_issue(foldername);
+        };
+        //render_issue(foldername);
     };
     
 };
@@ -156,8 +167,12 @@ function set_issue_list(){
         }else{
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };*/
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        
+        
         //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+
+        setting_issue_list = true;
+        download_handler(i);
     };
 };
 
