@@ -175,8 +175,8 @@ function set_issue_list(){
         
         $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
 
-        setting_issue_list = true;
-        download_handler(i);
+        //setting_issue_list = true;
+        //download_handler(i);
     };
 };
 
