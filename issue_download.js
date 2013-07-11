@@ -169,7 +169,7 @@ function init() {
 };
 
 function set_issue_list(){
-    get_issue_list_handler();//used to set the localStorage.issue_list; value...
+    //get_issue_list_handler();//used to set the localStorage.issue_list; value...
     for(var i = 0; i<= localStorage.issue_list; i++){
         //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
         /*var downloaded_issues = JSON.parse(localStorage.issuesdownloaded);
@@ -179,9 +179,13 @@ function set_issue_list(){
         }else{
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };*/
-        
+        setting_issue_list = true;
+        alert(download_handler(i));
         
         $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        
+        
+        
         /*
         setting_issue_list = true;
         alert(download_handler(i));
@@ -206,9 +210,11 @@ function get_issue_list_handler (){
         $('#issue_container').html("");
         set_issue_list();
         
-        $('#get_issues_btn').hide();
+        //$('#get_issues_btn').hide();
     })
-    .fail(function() { alert("error"); });
+    .fail(function() { 
+        set_issue_list(); 
+    });//uncomment if an error function is needed
 };
 
 $(document).ready(function(){
