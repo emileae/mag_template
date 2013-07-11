@@ -24,8 +24,20 @@ function madeDir(d){
     var reader = DATADIR.createReader();
     reader.readEntries(function(d){
         //alert('done with dirs'+'-'+foldername);
-        gotFileEntries(d);
+        if (setting_issue_list){
+            checkFileEntries(d)
+        }else{
+            gotFileEntries(d);
+        };
     },onError);
+};
+
+function checkFileEntries(fileEntries){
+    if(fileEntries.length>0){
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
+    }else if (fileEntries.length<=0){
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+    };
 };
 
 function gotFileEntries(fileEntries) {
@@ -42,27 +54,9 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
-        if (setting_issue_list == true){
-            return 'not_downloaded'
-            setting_issue_list = false;
-            //$('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
-            //setting_issue_list = false;
-            //alert('download');
-        }else{
-            download_issue_files(foldername);
-        };
-        //download_issue_files(foldername);
+        download_issue_files(foldername);
     }else{
-        if (setting_issue_list == true){
-            return 'downloaded';
-            setting_issue_list = false;
-            //$('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
-            //setting_issue_list = false;
-            //alert('downloaded');
-        }else{
-            render_issue(foldername);
-        };
-        //render_issue(foldername);
+        render_issue(foldername);
     };
     
 };
@@ -179,10 +173,11 @@ function set_issue_list(){
         }else{
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };*/
+
         setting_issue_list = true;
-        alert(download_handler(i));
+        download_handler(i);
         
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
         
         
