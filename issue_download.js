@@ -42,19 +42,23 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
-        if (setting_issue_list){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
+        if (setting_issue_list == true){
+            return 'not_downloaded'
             setting_issue_list = false;
-            alert('download');
+            //$('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
+            //setting_issue_list = false;
+            //alert('download');
         }else{
             download_issue_files(foldername);
         };
         //download_issue_files(foldername);
     }else{
-        if (setting_issue_list){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
+        if (setting_issue_list == true){
+            return 'downloaded';
             setting_issue_list = false;
-            alert('downloaded');
+            //$('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
+            //setting_issue_list = false;
+            //alert('downloaded');
         }else{
             render_issue(foldername);
         };
@@ -173,8 +177,15 @@ function set_issue_list(){
         };*/
         
         
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-
+        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        
+        setting_issue_list = true;
+        if (download_handler(i) == 'downloaded'){
+            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'"> Issue '+i+'</div>');
+        }else if (download_handler(i) == 'not_downloaded'){
+            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        };
+        
         //setting_issue_list = true;
         //download_handler(i);
     };
