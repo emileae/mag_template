@@ -57,9 +57,7 @@ function onError(e){
 }
 
 function onDeviceReady() {
-    alert('device ready');
     get_issue_list_handler ()
-    //set_issue_list();
     //$('body').append('download Issue: <button class="download_issue">1</button>');
     //$('body').append('download Issue: <button class="download_issue">2</button>');
 }
@@ -99,7 +97,8 @@ function download_issue_files(issue){
                 },onError);
             }
         };
-        $('#issue_'+foldername).html('Issue'+ foldername);
+        localStorage.dwnld_list = localStorage.dwnld_list+','+foldername;
+        alert(localStorage.dwnld_list);
         render_issue(foldername);
     }, "json");
 };
