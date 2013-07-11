@@ -20,24 +20,13 @@ function onFSSuccess(fileSystem) {
 
 function madeDir(d){
     //alert('found/made Directory'+'-'+foldername);
+    alert(setting_issue_list);
     DATADIR = d;
     var reader = DATADIR.createReader();
     reader.readEntries(function(d){
         //alert('done with dirs'+'-'+foldername);
-        if (setting_issue_list){
-            checkFileEntries(d)
-        }else{
-            gotFileEntries(d);
-        };
+        gotFileEntries(d);
     },onError);
-};
-
-function checkFileEntries(fileEntries){
-    if(fileEntries.length>0){
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
-    }else if (fileEntries.length<=0){
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-    };
 };
 
 function gotFileEntries(fileEntries) {
@@ -49,8 +38,18 @@ function gotFileEntries(fileEntries) {
     
     if(fileEntries.length>0){
         file_in_dir = true;
+        if ($('#issue_'+foldername).length > 0){
+            $('#issue_'+foldername).html('Issue '+foldername)
+        }else{
+            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
+        };
     }else if (fileEntries.length<=0){
         file_in_dir = false;
+        if ($('#issue_'+foldername).length > 0){
+            $('#issue_'+foldername).html('Download Issue '+foldername)
+        }else{
+            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
+        };
     };
     
     if (!file_in_dir){
@@ -176,6 +175,8 @@ function set_issue_list(){
 
         setting_issue_list = true;
         download_handler(i);
+        
+        $('#get_issues_btn').html('Refresh Issues');
         
         //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
