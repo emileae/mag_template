@@ -212,6 +212,8 @@ function get_issue_list_handler (){
 
 $(document).ready(function(){
     
+    init();
+    
     //set_issue_list();
     
     $('body').on('click tap', '#get_issues_btn', function(){
