@@ -167,6 +167,7 @@ function init() {
 };
 
 function set_issue_list(){
+    get_issue_list_handler();//used to set the localStorage.issue_list; value...
     for(var i = 0; i<= localStorage.issue_list; i++){
         //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
         /*var downloaded_issues = JSON.parse(localStorage.issuesdownloaded);
@@ -181,6 +182,7 @@ function set_issue_list(){
         //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
         setting_issue_list = true;
+        alert(download_handler(i));
         if (download_handler(i) == 'downloaded'){
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'"> Issue '+i+'</div>');
         }else if (download_handler(i) == 'not_downloaded'){
@@ -193,6 +195,19 @@ function set_issue_list(){
 };
 
 
+function get_issue_list_handler (){
+    $.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
+        var latest_issue = parseInt(data['issue_num'])
+        localStorage.issue_list = latest_issue;
+        //alert(localStorage.issue_list);
+        
+        $('#issue_container').html("");
+        set_issue_list();
+        
+        $('#get_issues_btn').hide();
+    });
+};
+
 $(document).ready(function(){
     
     //set_issue_list();
@@ -201,8 +216,8 @@ $(document).ready(function(){
         //alert('yoyo');
         
         $('#get_issues_btn').html('Loading');
-        
-        $.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
+        get_issue_list_handler();
+        /*$.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
             var latest_issue = parseInt(data['issue_num'])
             localStorage.issue_list = latest_issue;
             //alert(localStorage.issue_list);
@@ -211,7 +226,7 @@ $(document).ready(function(){
             set_issue_list();
             
             $('#get_issues_btn').hide();
-        });
+        });*/
     });
     
     $('body').on('tap click', '.issue_download', function(){
