@@ -38,18 +38,10 @@ function gotFileEntries(fileEntries) {
     
     if(fileEntries.length>0){
         file_in_dir = true;
-        if ($('#issue_'+foldername).length > 0){
-            $('#issue_'+foldername).html('Issue '+foldername)
-        }else{
-            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
-        };
+        $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Issue '+foldername+'</div>');
     }else if (fileEntries.length<=0){
         file_in_dir = false;
-        if ($('#issue_'+foldername).length > 0){
-            $('#issue_'+foldername).html('Download Issue '+foldername)
-        }else{
-            $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
-        };
+        $('#issue_container').append('<div class="issue_download" id="issue_'+foldername+'">Download Issue '+foldername+'</div>');
     };
     
     if (!file_in_dir){
