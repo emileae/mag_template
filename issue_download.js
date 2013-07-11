@@ -207,7 +207,8 @@ function get_issue_list_handler (){
         set_issue_list();
         
         $('#get_issues_btn').hide();
-    });
+    })
+    .fail(function() { alert("error"); });
 };
 
 $(document).ready(function(){
@@ -221,16 +222,6 @@ $(document).ready(function(){
         
         $('#get_issues_btn').html('Loading');
         get_issue_list_handler();
-        /*$.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
-            var latest_issue = parseInt(data['issue_num'])
-            localStorage.issue_list = latest_issue;
-            //alert(localStorage.issue_list);
-            
-            $('#issue_container').html("");
-            set_issue_list();
-            
-            $('#get_issues_btn').hide();
-        });*/
     });
     
     $('body').on('tap click', '.issue_download', function(){
