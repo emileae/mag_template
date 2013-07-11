@@ -74,8 +74,9 @@ function onError(e){
 }
 
 function onDeviceReady() {
-    $('body').append('download Issue: <button class="download_issue">1</button>');
-    $('body').append('download Issue: <button class="download_issue">2</button>');
+    set_issue_list();
+    //$('body').append('download Issue: <button class="download_issue">1</button>');
+    //$('body').append('download Issue: <button class="download_issue">2</button>');
 }
 
 function download_handler(issue){
@@ -194,7 +195,7 @@ function set_issue_list(){
 
 $(document).ready(function(){
     
-    set_issue_list();
+    //set_issue_list();
     
     $('body').on('click tap', '#get_issues_btn', function(){
         //alert('yoyo');
