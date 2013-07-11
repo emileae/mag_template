@@ -179,15 +179,15 @@ function set_issue_list(){
         };*/
         
         
-        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        /*
         setting_issue_list = true;
         alert(download_handler(i));
         if (download_handler(i) == 'downloaded'){
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'"> Issue '+i+'</div>');
         }else if (download_handler(i) == 'not_downloaded'){
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        };
+        };*/
         
         //setting_issue_list = true;
         //download_handler(i);
