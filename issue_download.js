@@ -16,16 +16,29 @@ function onFSSuccess(fileSystem) {
     fileSystem.root.getDirectory("Android/data/iab.com.scknss.www",{create:true, exclusive: false}, function(appID){
         appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError)
     },onError);
-}
+};
+
+function onFSSuccess_check(fileSystem){
+    fileSystem.root.getDirectory("Android/data/iab.com.scknss.www",{create:true, exclusive: false}, function(appID){
+        appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir_check, onError)
+    },onError);
+};
 
 function madeDir(d){
     //alert('found/made Directory'+'-'+foldername);
-    alert(setting_issue_list);
     DATADIR = d;
     var reader = DATADIR.createReader();
     reader.readEntries(function(d){
         //alert('done with dirs'+'-'+foldername);
         gotFileEntries(d);
+    },onError);
+};
+
+function madeDir_check(d){
+    DATADIR = d;
+    var reader = DATADIR.createReader();
+    reader.readEntries(function(d){
+        gotFileEntries_check(d);
     },onError);
 };
 
@@ -50,6 +63,16 @@ function gotFileEntries(fileEntries) {
     
 };
 
+function gotFileEntries_check(fileEntries){
+    if (fileEntries.length > 0){
+        alert('append issue');
+        //return true
+    }else{
+        alert('append download issue');
+        //return false
+    };
+};
+
 function onError(e){
     alert("ERROR");
     //alert(e.target.error.code);
@@ -66,6 +89,11 @@ function download_handler(issue){
     //alert('download handler'+issue);
     foldername = issue;
     window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess, null);
+};
+
+function check_download(issue){
+    foldername = issue;
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess_check, null);
 };
 
 function download_issue_files(issue){
@@ -97,8 +125,6 @@ function download_issue_files(issue){
                 },onError);
             }
         };
-        localStorage.dwnld_list = localStorage.dwnld_list+','+foldername;
-        alert(localStorage.dwnld_list);
         render_issue(foldername);
     }, "json");
 };
@@ -166,6 +192,7 @@ function set_issue_list(){
 
         //setting_issue_list = true;
         //download_handler(i);
+        check_download(i);
         
         $('#get_issues_btn').html('Refresh Issues');
         
