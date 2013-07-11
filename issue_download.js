@@ -74,7 +74,8 @@ function onError(e){
 }
 
 function onDeviceReady() {
-    set_issue_list();
+    get_issue_list_handler ()
+    //set_issue_list();
     //$('body').append('download Issue: <button class="download_issue">1</button>');
     //$('body').append('download Issue: <button class="download_issue">2</button>');
 }
