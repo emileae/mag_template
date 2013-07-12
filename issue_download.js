@@ -9,6 +9,11 @@ var setting_issue_list = false;
 
 //localStorage.issue_list = 1;
 
+//mark as downloaded... for some reason doesnt set variables or storage in download function? async?
+/*var string_folder = foldername.toString();
+alert(string_folder);*/
+localStorage.downloaded = 'string_folder';
+
 
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
@@ -42,11 +47,6 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
-        //mark as downloaded... for some reason doesnt set variables or storage in download function? async?
-        var string_folder = foldername.toString();
-        alert(string_folder);
-        localStorage.downloaded = string_folder;
-        //then download
         download_issue_files(foldername);
     }else{
         render_issue(foldername);
