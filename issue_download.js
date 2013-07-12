@@ -42,6 +42,11 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
+        //mark as downloaded... for some reason doesnt set variables or storage in download function? async?
+        var string_folder = foldername.toString();
+        alert(string_folder);
+        localStorage.downloaded = string_folder;
+        //then download
         download_issue_files(foldername);
     }else{
         render_issue(foldername);
@@ -69,9 +74,6 @@ function download_handler(issue){
 
 function download_issue_files(issue){
     //alert('getting file dict to download');
-    var string_folder = foldername.toString();
-    alert(string_folder);
-    localStorage.downloaded = string_folder;
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
         //function(data){returns list of files to download}
         for (var key in data) {
