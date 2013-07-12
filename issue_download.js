@@ -87,12 +87,13 @@ function download_issue_files(issue){
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
         };
+        set_issue_list();//just refreshing issue list
         render_issue(foldername);
     }, "json");
 };
 
 function render_issue(foldername){
-    alert(localStorage.downloaded);
+    //alert(localStorage.downloaded);
     //alert('should render '+foldername);
     //alert('dir: '+DATADIR.fullPath);
     DATADIR.getFile("index.html", {}, gotFileEntry, onError);
