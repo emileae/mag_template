@@ -162,7 +162,6 @@ function init() {
 function set_issue_list(){
     var str = localStorage.downloaded;
     var n = str.split(",");
-    alert(n[0]);
     for(var i = 0; i<= localStorage.issue_list; i++){
         //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
         /*var downloaded_issues = JSON.parse(localStorage.issuesdownloaded);
