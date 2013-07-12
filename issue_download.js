@@ -146,11 +146,17 @@ function set_issue_list(){
         $('#get_issues_btn').html('Refresh Issues');
         
         if (localStorage.downloaded){
-            alert('downloads');
+            //alert('downloads');
             var str = localStorage.downloaded;
             var n = str.split(",");
             var i_string = i.toString();
-            if($.inArray(i_string,n) > -1){$('#issue_'+i).text('Issue '+i);}
+            alert('string '+i_string);
+            alert('not string '+i);
+            alert('array '+n);
+            var in_array = $.inArray(i_string,n)
+            alert('in array '+in_array);
+            
+            //if($.inArray(i_string,n) > -1){$('#issue_'+i).text('Issue '+i);}
         }else{
             alert('no downloads');
         };
