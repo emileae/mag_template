@@ -160,44 +160,12 @@ function init() {
 };
 
 function set_issue_list(){
-    var str = localStorage.downloaded;
-    var n = str.split(",");
     for(var i = 0; i<= localStorage.issue_list; i++){
-        //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
-        /*var downloaded_issues = JSON.parse(localStorage.issuesdownloaded);
-        var string_issue = i.toString();
-        if ($.inArray(string_issue, downloaded_issues) > -1 ){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
-        }else{
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        };*/
-
-        //setting_issue_list = true;
-        //download_handler(i);
-        
-        /*if (($.inArray(i.toString(), downloaded_array)) > -1){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        }else{
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
-        };*/
         
         $('#get_issues_btn').html('Refresh Issues');
         
         $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
-        
-        
-        /*
-        setting_issue_list = true;
-        alert(download_handler(i));
-        if (download_handler(i) == 'downloaded'){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'"> Issue '+i+'</div>');
-        }else if (download_handler(i) == 'not_downloaded'){
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        };*/
-        
-        //setting_issue_list = true;
-        //download_handler(i);
     };
 };
 
