@@ -9,16 +9,10 @@ var setting_issue_list = false;
 
 //localStorage.issue_list = 1;
 
-//mark as downloaded... for some reason doesnt set variables or storage in download function? async?
-/*var string_folder = foldername.toString();
-alert(string_folder);*/
-//localStorage.downloaded = 'string_folder';
-
-
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
     //alert('find or create Directory'+'-'+foldername);
-    fileSystem.root.getDirectory("Android/data/iab.com.scknss.www",{create:true, exclusive: false}, function(appID){
+    fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
         appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError)
     },onError);
 };
@@ -47,7 +41,6 @@ function gotFileEntries(fileEntries) {
     };
     
     if (!file_in_dir){
-        localStorage.downloaded = 'string_folder';
         download_issue_files(foldername);
     }else{
         render_issue(foldername);
@@ -83,6 +76,10 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 //alert("downloading crap to " + dlPath);
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
+                    /*var string_folder = foldername.toString();
+                    alert(string_folder);*/
+                    //localStorage.downloaded = 'string_folder';
+                    
                     //$('#issue_'+foldername).html('Issue'+ foldername);
                     /*if (localStorage.issuesdownloaded){
                         var issues_downloaded = JSON.parse(localStorage.issuesdownloaded);
@@ -102,6 +99,9 @@ function download_issue_files(issue){
                 },onError);
             }
         };
+        var string_folder = foldername.toString();
+        alert(string_folder);
+        localStorage.downloaded = string_folder;
         render_issue(foldername);
     }, "json");
 };
