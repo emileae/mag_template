@@ -149,7 +149,7 @@ function set_issue_list(){
             alert('downloads');
             var str = localStorage.downloaded;
             var n = str.split(",");
-            alert(n);
+            if($.inArray(i,n) > -1){$('#issue_'+i).text('Issue '+i);}
         }else{
             alert('no downloads');
         };
