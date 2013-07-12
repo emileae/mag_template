@@ -161,7 +161,8 @@ function init() {
 
 function set_issue_list(){
     //get_issue_list_handler();//used to set the localStorage.issue_list; value...
-    var downloaded_array = localStorage.downloaded.split(',');
+    var downloaded_array = localStorage.downloaded;
+    downloaded_array = downloaded_array.split(',');
     
     for(var i = 0; i<= localStorage.issue_list; i++){
         //if (i.toString()){}// !!!!!!!!!!!!!!!!!!!!
@@ -182,7 +183,7 @@ function set_issue_list(){
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
         };*/
         
-        alert($.inArray(i,downloaded_array));
+        alert(downloaded_array);
         
         $('#get_issues_btn').html('Refresh Issues');
         
