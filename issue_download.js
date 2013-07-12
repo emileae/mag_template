@@ -69,6 +69,9 @@ function download_handler(issue){
 
 function download_issue_files(issue){
     //alert('getting file dict to download');
+    var string_folder = foldername.toString();
+    alert(string_folder);
+    localStorage.downloaded = string_folder;
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
         //function(data){returns list of files to download}
         for (var key in data) {
@@ -96,7 +99,6 @@ function download_issue_files(issue){
                 },onError);
             }
         };
-        localStorage.downloaded = foldername.toString();
         render_issue(foldername);
     }, "json");
 };
