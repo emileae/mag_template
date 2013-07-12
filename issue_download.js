@@ -141,16 +141,20 @@ function init() {
 };
 
 function set_issue_list(){
-    if (localStorage.downloaded){
-        alert('downloads')
-    }else{
-        alert('no downloads');
-    };
     for(var i = 0; i<= localStorage.issue_list; i++){
         
         $('#get_issues_btn').html('Refresh Issues');
         
-        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        if (localStorage.downloaded){
+            alert('downloads');
+            var str = localStorage.downloaded;
+            var n = str.split(",");
+            alert(n);
+        }else{
+            alert('no downloads');
+        };
+        
+        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
     };
 };
