@@ -154,7 +154,7 @@ function set_issue_list(){
             alert('no downloads');
         };
         
-        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+        $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         
     };
 };
