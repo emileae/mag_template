@@ -96,7 +96,7 @@ function download_issue_files(issue){
                 },onError);
             }
         };
-        localStorage.downloaded = foldername;
+        localStorage.downloaded = foldername.toString();
         render_issue(foldername);
     }, "json");
 };
