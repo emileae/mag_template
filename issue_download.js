@@ -142,6 +142,7 @@ function init() {
 };
 
 function set_issue_list(){
+    $('#issue_container').html("");
     for(var i = 0; i<= localStorage.issue_list; i++){
         
         $('#get_issues_btn').html('Refresh Issues');
@@ -177,7 +178,6 @@ function get_issue_list_handler (){
         localStorage.issue_list = latest_issue;
         //alert(localStorage.issue_list);
         
-        $('#issue_container').html("");
         set_issue_list();
         
         //$('#get_issues_btn').hide();
