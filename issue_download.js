@@ -145,7 +145,19 @@ function onError_test_1(e){
 };
 function onError_test_2(e){
     alert("ERROR TEST 2");
-}
+};
+function onError_test_3(e){
+    alert("ERROR TEST 3");
+};
+function onError_test_4(e){
+    alert("ERROR TEST 4");
+};
+function onError_test_5(e){
+    alert("ERROR TEST 5");
+};
+function onError_test_6(e){
+    alert("ERROR TEST 6");
+};
 
 function onDeviceReady() {
     get_issue_list_handler ()
@@ -169,7 +181,8 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
                     alert('downloaded');
-                },onError);
+                    
+                },onError_test_6);
             }
         };
         var string_folder = foldername.toString();
@@ -188,12 +201,12 @@ function render_issue(foldername){
     //alert(localStorage.downloaded);
     //alert('should render '+foldername);
     //alert('dir: '+DATADIR.fullPath);
-    DATADIR.getFile("article_list.html", {}, gotFileEntry, onError);//was "index.html"
+    DATADIR.getFile("article_list.html", {}, gotFileEntry, onError_test_3);//was "index.html"
 };
 
 function gotFileEntry(fileEntry) {
     //alert('gotfileentry');
-    fileEntry.file(gotFile, onError);
+    fileEntry.file(gotFile, onError_test_4);
 }
 
 function gotFile(file){
