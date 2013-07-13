@@ -183,7 +183,7 @@ function render_issue(foldername){
 };
 
 function gotFileEntry(fileEntry) {
-    a//lert('gotfileentry');
+    //alert('gotfileentry');
     fileEntry.file(gotFile, onError);
 }
 
@@ -244,15 +244,11 @@ function set_issue_list(){
             }else{
                 $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             };
-            
-            //if($.inArray(i_string,n) > -1){$('#issue_'+i).text('Issue '+i);}
         }else{
             //alert('no downloads');
             $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };
-        
-        //$('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        
+
     };
 };
 
@@ -261,11 +257,9 @@ function get_issue_list_handler (){
     $.get("http://eaeissues.appspot.com/get_issue_list", {}, function(data) {
         var latest_issue = parseInt(data['issue_num'])
         localStorage.issue_list = latest_issue;
-        //alert(localStorage.issue_list);
-        
+
         set_issue_list();
-        
-        //$('#get_issues_btn').hide();
+
     })
     .fail(function() { 
         set_issue_list(); 
@@ -275,8 +269,6 @@ function get_issue_list_handler (){
 $(document).ready(function(){
     
     init();
-    
-    //set_issue_list();
     
     $('body').on('click tap', '#get_issues_btn', function(){
         //alert('yoyo');
@@ -293,7 +285,7 @@ $(document).ready(function(){
         //alert('issue number: '+issue);
         
         download_handler(issue);
-        hide_tab();
+        //hide_tab();
     });
 });
 
