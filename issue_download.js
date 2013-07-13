@@ -180,7 +180,7 @@ function download_issue_files(issue){
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
-                    alert('downloaded');
+                    alert(data.length);
                     
                 },onError_test_6);
             }
