@@ -180,8 +180,11 @@ function download_issue_files(issue){
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
-                    alert(data.length);
-                    
+                    alert(key);
+                    if (key == 'article_list.html'){
+                        set_issue_list();//just refreshing issue list !!!!!!!!!!!!NBNBNBNNBNBNBNBNBNBNBN if this method is used then each issue REQUIRES and article_list.html
+                        render_issue(foldername);
+                    };
                 },onError_test_6);
             }
         };
@@ -192,8 +195,8 @@ function download_issue_files(issue){
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
         };
-        set_issue_list();//just refreshing issue list
-        render_issue(foldername);
+        //set_issue_list();//just refreshing issue list
+        //render_issue(foldername);
     }, "json");
 };
 
