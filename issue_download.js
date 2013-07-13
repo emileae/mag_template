@@ -187,11 +187,11 @@ function download_issue_files(issue){
         alert('length'+files.length);
         for (var i=0; i < files.length; i++){
             var data_key = files[i];
+            alert('i '+i);
             
             var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
-                    alert('i '+i);
                     if (i == (files.length - 1)){
                         set_issue_list();//just refreshing issue list !!!!!!!!!!!!NBNBNBNNBNBNBNBNBNBNBN if this method is used then each issue REQUIRES and article_list.html
                         render_issue(foldername);
