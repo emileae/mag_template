@@ -97,8 +97,8 @@ function readAsText_new(file) {
 function onFSSuccess(fileSystem) {
     //alert('find or create Directory'+'-'+foldername);
     fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
-        appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError)
-    },onError);
+        appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError_test_2)
+    },onError_test_1);
 };
 
 function madeDir(d){
@@ -108,7 +108,7 @@ function madeDir(d){
     reader.readEntries(function(d){
         //alert('done with dirs'+'-'+foldername);
         gotFileEntries(d);
-    },onError);
+    },onError_test);
 };
 
 function gotFileEntries(fileEntries) {
@@ -139,8 +139,12 @@ function onError(e){
 };
 function onError_test(e){
     alert("ERROR TEST");
-    //alert(e.target.error.code);
-    //alert(JSON.stringify(e));
+};
+function onError_test_1(e){
+    alert("ERROR TEST 1");
+};
+function onError_test_2(e){
+    alert("ERROR TEST 2");
 }
 
 function onDeviceReady() {
@@ -165,7 +169,7 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
                     alert('downloaded');
-                },onError_test);
+                },onError);
             }
         };
         var string_folder = foldername.toString();
