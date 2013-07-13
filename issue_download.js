@@ -180,8 +180,8 @@ function download_issue_files(issue){
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
-                    alert(key);
-                    if (key == 'article_list.html'){
+                    alert(data[key]);
+                    if (data[key] == 'article_list.html'){
                         set_issue_list();//just refreshing issue list !!!!!!!!!!!!NBNBNBNNBNBNBNBNBNBNBN if this method is used then each issue REQUIRES and article_list.html
                         render_issue(foldername);
                     };
