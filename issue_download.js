@@ -2,12 +2,96 @@
 
 //Global instance of DirectoryEntry for our data
 var DATADIR;
+var fetched_datadir;
+var article_name;
+var issue_dir;
 var knownfiles = []; 
 var filename = "";
 var foldername = "";
 var setting_issue_list = false;
 
-//localStorage.issue_list = 1;
+// START FETCH DATADIR FUNCTION
+
+
+    //set issue and article names globally
+function fetch_datadir(issue, articlename){
+    article_name = articlename;
+    issue_dir = issue;
+    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess_new, null);
+};
+
+function onFSSuccess_new(fileSystem) {
+    fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
+        appID.getDirectory(issue_dir, {create: true, exclusive: false}, madeDir_new, onError)
+    },onError);
+};
+
+function madeDir_new(d){
+    fetched_datadir = d;
+    var reader = fetched_datadir.createReader();
+    reader.readEntries(function(d){
+        gotFileEntries_new(d);
+    },onError);
+};
+
+function gotFileEntries_new(fileEntries) {
+
+    var file_in_dir = false;
+    
+    if(fileEntries.length>0){
+        file_in_dir = true;
+    }else if (fileEntries.length<=0){
+        file_in_dir = false;
+    };
+    
+    if (!file_in_dir){
+        alert('no files in folder: '+foldername);
+    }else{
+        render_article(foldername);
+    };
+    
+};
+
+function render_article(foldername){
+    fetched_datadir.getFile(article_name, {}, gotFileEntry_new, onError);
+};
+
+function gotFileEntry_new(fileEntry) {
+    fileEntry.file(gotFile_new, onError);
+};
+
+function gotFile_new(file){
+    readAsText_new(file);
+};
+
+function readAsText_new(file) {
+    var reader = new FileReader();
+    reader.onloadend = function(evt) {
+        
+        $('.scroller').html(evt.target.result);
+        pageScroll.refresh();
+        
+        //setting the src url for all images
+        var imgs = document.getElementsByTagName("img");
+        
+        for(var i = 0; i < imgs.length; i++){
+           var file_name = imgs[i].getAttribute('id');
+           imgs[i].src = DATADIR.fullPath+'/'+file_name;
+           close_menu();
+        }
+        
+    };
+    reader.readAsText(file);
+};
+
+
+
+
+
+
+// END FETCH DATADIR FUNCTION
+
+
 
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
@@ -74,14 +158,13 @@ function download_issue_files(issue){
             if (data.hasOwnProperty(key)) {
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
-                //alert("downloading crap to " + dlPath);
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
                     
                 },onError);
             }
         };
         var string_folder = foldername.toString();
-        alert(string_folder);
+        //alert(string_folder);
         if (localStorage.downloaded == undefined){
             localStorage.downloaded = string_folder;
         }else{
@@ -96,7 +179,7 @@ function render_issue(foldername){
     //alert(localStorage.downloaded);
     //alert('should render '+foldername);
     //alert('dir: '+DATADIR.fullPath);
-    DATADIR.getFile("index.html", {}, gotFileEntry, onError);
+    DATADIR.getFile("article_list.html", {}, gotFileEntry, onError);//was "index.html"
 };
 
 function gotFileEntry(fileEntry) {
@@ -114,9 +197,10 @@ function readAsText(file) {
     //alert("Read as text");
     var reader = new FileReader();
     reader.onloadend = function(evt) {
-        //alert(evt.target.result);
         
-        $('.scroller').html(evt.target.result);
+        $('#issue_container').append(evt.target.result);
+        
+        /*$('.scroller').html(evt.target.result);
         pageScroll.refresh();
         
         var imgs = document.getElementsByTagName("img");
@@ -126,7 +210,7 @@ function readAsText(file) {
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            //alert(imgs[i].src);
            close_menu();
-        }
+        }*/
     };
     reader.readAsText(file);
 }
