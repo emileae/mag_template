@@ -136,6 +136,11 @@ function onError(e){
     alert("ERROR");
     //alert(e.target.error.code);
     //alert(JSON.stringify(e));
+};
+function onError_test(e){
+    alert("ERROR TEST");
+    //alert(e.target.error.code);
+    //alert(JSON.stringify(e));
 }
 
 function onDeviceReady() {
@@ -160,7 +165,7 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
                     alert('downloaded');
-                },onError);
+                },onError_test);
             }
         };
         var string_folder = foldername.toString();
