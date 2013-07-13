@@ -95,14 +95,14 @@ function readAsText_new(file) {
 
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
-    alert('find or create Directory'+'-'+foldername);
+    //alert('find or create Directory'+'-'+foldername);
     fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
         appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError)
     },onError);
 };
 
 function madeDir(d){
-    alert('found/made Directory'+'-'+foldername);
+    //alert('found/made Directory'+'-'+foldername);
     DATADIR = d;
     var reader = DATADIR.createReader();
     reader.readEntries(function(d){
@@ -112,7 +112,7 @@ function madeDir(d){
 };
 
 function gotFileEntries(fileEntries) {
-    alert("The dir has "+fileEntries.length+" entries."+'-'+foldername);
+    //alert("The dir has "+fileEntries.length+" entries."+'-'+foldername);
 
     var file_in_dir = false;
     
@@ -151,7 +151,7 @@ function download_handler(issue){
 };
 
 function download_issue_files(issue){
-    alert('getting file dict to download');
+    //alert('getting file dict to download');
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
         //function(data){returns list of files to download}
         for (var key in data) {
@@ -177,19 +177,19 @@ function download_issue_files(issue){
 
 function render_issue(foldername){
     //alert(localStorage.downloaded);
-    alert('should render '+foldername);
+    //alert('should render '+foldername);
     //alert('dir: '+DATADIR.fullPath);
     DATADIR.getFile("article_list.html", {}, gotFileEntry, onError);//was "index.html"
 };
 
 function gotFileEntry(fileEntry) {
-    alert('gotfileentry');
+    a//lert('gotfileentry');
     fileEntry.file(gotFile, onError);
 }
 
 function gotFile(file){
     //readDataUrl(file);
-    alert('gotfile');
+    //alert('gotfile');
     readAsText(file);
 }
 
@@ -199,6 +199,7 @@ function readAsText(file) {
     reader.onloadend = function(evt) {
         
         $('#issue_container').append(evt.target.result);
+        $('#article_list_'+foldername).html(evt.target.result);
         
         /*$('.scroller').html(evt.target.result);
         pageScroll.refresh();
@@ -220,7 +221,7 @@ function close_menu(){
     //table_of_contents script needs to be at bottom of html body instead of in document ready...
 };
 
-//only add download buttons once device is ready
+//download recent issue list if user is online
 function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
 };
@@ -239,9 +240,9 @@ function set_issue_list(){
             var in_array = $.inArray(i_string,n);
             
             if (in_array > -1){
-                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div>');
+                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             }else{
-                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             };
             
             //if($.inArray(i_string,n) > -1){$('#issue_'+i).text('Issue '+i);}
