@@ -159,7 +159,7 @@ function download_issue_files(issue){
                 var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
-                    
+                    alert('downloaded');
                 },onError);
             }
         };
@@ -198,7 +198,7 @@ function readAsText(file) {
     var reader = new FileReader();
     reader.onloadend = function(evt) {
         
-        $('#issue_container').append(evt.target.result);
+        //$('#issue_container').append(evt.target.result);
         $('#article_list_'+foldername).html(evt.target.result);
         
         /*$('.scroller').html(evt.target.result);
