@@ -259,7 +259,7 @@ function readAsText(file) {
         
         //$('#issue_container').append(evt.target.result);
         $('#article_list_'+foldername).html(evt.target.result);
-        
+        alert($('#a1i4').html());
         /*$('.scroller').html(evt.target.result);
         pageScroll.refresh();
         
