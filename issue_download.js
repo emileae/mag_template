@@ -57,7 +57,7 @@ function gotFileEntries_new(fileEntries) {
 function render_article(foldername, articlename){
     alert('try to render');
     article_name = articlename;
-    fetched_datadir.getFile(article_name, {}, gotFileEntry_new, onError);
+    DATADIR.getFile(article_name, {}, gotFileEntry_new, onError);
 };
 
 function gotFileEntry_new(fileEntry) {
@@ -271,6 +271,7 @@ function readAsText(file) {
            //alert(imgs[i].src);
            close_menu();
         }*/
+        render_article('4', '1');
     };
     reader.readAsText(file);
 }
@@ -347,11 +348,12 @@ $(document).ready(function(){
         //hide_tab();
     });
     
+    /*
     $('body').on('tap', '#a1i4', function(){
         alert('article tapped');
         render_article('4', '1');
     });
-    
+    8/
     
 });
 
