@@ -271,7 +271,6 @@ function readAsText(file) {
            //alert(imgs[i].src);
            close_menu();
         }*/
-        render_article('4', '1');
     };
     reader.readAsText(file);
 }
@@ -348,12 +347,12 @@ $(document).ready(function(){
         //hide_tab();
     });
     
-    /*
+    
     $('body').on('tap', '#a1i4', function(){
         alert('article tapped');
-        render_article('4', '1');
+        //render_article('4', '1');
     });
-    8/
+    
     
 });
 
