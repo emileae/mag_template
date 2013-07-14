@@ -55,6 +55,7 @@ function gotFileEntries_new(fileEntries) {
 */
 
 function render_article(foldername, articlename){
+    alert('try to render');
     article_name = articlename;
     fetched_datadir.getFile(article_name, {}, gotFileEntry_new, onError);
 };
@@ -347,6 +348,7 @@ $(document).ready(function(){
     });
     
     $('body').on('tap', '#a1i4', function(){
+        alert('article tapped');
         render_article('4', '1');
     });
     
