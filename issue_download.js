@@ -12,7 +12,7 @@ var setting_issue_list = false;
 
 // START FETCH DATADIR FUNCTION
 
-
+/*
     //set issue and article names globally
 function fetch_datadir(issue, articlename){
     article_name = articlename;
@@ -52,7 +52,10 @@ function gotFileEntries_new(fileEntries) {
     
 };
 
-function render_article(foldername){
+*/
+
+function render_article(foldername, articlename){
+    article_name = articlename;
     fetched_datadir.getFile(article_name, {}, gotFileEntry_new, onError);
 };
 
@@ -185,20 +188,15 @@ function download_issue_files(issue){
         };
         
         var render = false;
-        
-        alert('length'+files.length);
+
         for (var i=0; i < files.length; i++){
             var data_key = files[i];
             
-            //alert('i '+i);
-            
             if (i == (files.length-1)){
-                //alert('render');
                 render = true;
             };
             
             var ft = new FileTransfer();
-                //alert(data[data_key]);
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     if (render){
@@ -347,6 +345,12 @@ $(document).ready(function(){
         download_handler(issue);
         //hide_tab();
     });
+    
+    $('body').on('tap', '#a1i4', function(){
+        render_article('4', '1');
+    });
+    
+    
 });
 
 
