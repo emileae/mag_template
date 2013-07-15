@@ -176,18 +176,26 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     if (render){
+                        
+                        var string_folder = foldername.toString();
+                        if (localStorage.downloaded == undefined){
+                            localStorage.downloaded = string_folder;
+                        }else{
+                            localStorage.downloaded = localStorage.downloaded+','+string_folder;
+                        };
+                        
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
                 },onError_test_6);
         };
-        
+        /*
         var string_folder = foldername.toString();
         if (localStorage.downloaded == undefined){
             localStorage.downloaded = string_folder;
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
-        };
+        };*/
     }, "json");
 };
 
