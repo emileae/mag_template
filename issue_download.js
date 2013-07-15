@@ -16,7 +16,7 @@ function render_article(articlename){
     //alert('try to render');
     //alert(DATADIR);
     article_name = articlename;
-    DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_1);
+    DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_2);
 };
 
 function gotFileEntry_new(fileEntry) {
@@ -183,7 +183,7 @@ function download_issue_files(issue){
                         }else{
                             localStorage.downloaded = localStorage.downloaded+','+string_folder;
                         };
-                        
+                        alert(localStorage.downloaded);
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
@@ -299,6 +299,7 @@ $(document).ready(function(){
         var id = $(this).attr('id');
         var filenum = id.slice(1);
         var filename = filenum+'.html';
+        alert(filename);
         render_article(filename);
     });
     
