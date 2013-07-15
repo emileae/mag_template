@@ -12,48 +12,6 @@ var setting_issue_list = false;
 
 // START FETCH DATADIR FUNCTION
 
-/*
-    //set issue and article names globally
-function fetch_datadir(issue, articlename){
-    article_name = articlename;
-    issue_dir = issue;
-    window.requestFileSystem(LocalFileSystem.PERSISTENT, 0, onFSSuccess_new, null);
-};
-
-function onFSSuccess_new(fileSystem) {
-    fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
-        appID.getDirectory(issue_dir, {create: true, exclusive: false}, madeDir_new, onError)
-    },onError);
-};
-
-function madeDir_new(d){
-    fetched_datadir = d;
-    var reader = fetched_datadir.createReader();
-    reader.readEntries(function(d){
-        gotFileEntries_new(d);
-    },onError);
-};
-
-function gotFileEntries_new(fileEntries) {
-
-    var file_in_dir = false;
-    
-    if(fileEntries.length>0){
-        file_in_dir = true;
-    }else if (fileEntries.length<=0){
-        file_in_dir = false;
-    };
-    
-    if (!file_in_dir){
-        alert('no files in folder: '+foldername);
-    }else{
-        render_article(foldername);
-    };
-    
-};
-
-*/
-
 function render_article(articlename){
     //alert('try to render');
     //alert(DATADIR);
@@ -167,8 +125,6 @@ function onError_test_6(e){
 
 function onDeviceReady() {
     get_issue_list_handler ()
-    //$('body').append('download Issue: <button class="download_issue">1</button>');
-    //$('body').append('download Issue: <button class="download_issue">2</button>');
 }
 
 function download_handler(issue){
@@ -179,6 +135,7 @@ function download_handler(issue){
 
 function download_issue_files(issue){
     //alert('getting file dict to download');
+    $('#issue_'+issue).html('Loading');
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
         //function(data){returns list of files to download}
         
@@ -209,37 +166,17 @@ function download_issue_files(issue){
                 },onError_test_6);
         };
         
-        /*
-        for (var key in data) {
-            if (data.hasOwnProperty(key)) {
-                var ft = new FileTransfer();
-                var dlPath = DATADIR.fullPath + "/" + key;
-                ft.download("http://eaeissues.appspot.com/getfile/" + data[key], dlPath, function(){
-                    alert(key);
-                    if (key == 'article_list.html'){
-                        set_issue_list();//just refreshing issue list !!!!!!!!!!!!NBNBNBNNBNBNBNBNBNBNBN if this method is used then each issue REQUIRES and article_list.html
-                        render_issue(foldername);
-                    };
-                },onError_test_6);
-            }
-        };*/
-        
         var string_folder = foldername.toString();
-        //alert(string_folder);
         if (localStorage.downloaded == undefined){
             localStorage.downloaded = string_folder;
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
         };
-        //set_issue_list();//just refreshing issue list
-        //render_issue(foldername);
     }, "json");
 };
 
 function render_issue(foldername){
-    //alert(localStorage.downloaded);
     //alert('should render '+foldername);
-    //alert('dir: '+DATADIR.fullPath);
     DATADIR.getFile("article_list.html", {}, gotFileEntry, onError_test_3);//was "index.html"
 };
 
@@ -249,7 +186,6 @@ function gotFileEntry(fileEntry) {
 }
 
 function gotFile(file){
-    //readDataUrl(file);
     //alert('gotfile');
     readAsText(file);
 }
@@ -258,24 +194,11 @@ function readAsText(file) {
     //alert("Read as text");
     var reader = new FileReader();
     reader.onloadend = function(evt) {
-        
-        //$('#issue_container').append(evt.target.result);
-        
+
         $('.article_list').html("");
         
         $('#article_list_'+foldername).html(evt.target.result);
         menuScroll.refresh();
-        /*$('.scroller').html(evt.target.result);
-        pageScroll.refresh();
-        
-        var imgs = document.getElementsByTagName("img");
-        
-        for(var i = 0; i < imgs.length; i++){
-           var file_name = imgs[i].getAttribute('id');
-           imgs[i].src = DATADIR.fullPath+'/'+file_name;
-           //alert(imgs[i].src);
-           close_menu();
-        }*/
     };
     reader.readAsText(file);
 }
@@ -297,7 +220,6 @@ function set_issue_list(){
         $('#get_issues_btn').html('Refresh Issues');
         
         if (localStorage.downloaded){
-            //alert('downloads');
             var str = localStorage.downloaded;
             var n = str.split(",");
             var i_string = i.toString();
@@ -309,7 +231,6 @@ function set_issue_list(){
                 $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             };
         }else{
-            //alert('no downloads');
             $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };
 
@@ -328,7 +249,7 @@ function get_issue_list_handler (){
     })
     .fail(function() { 
         set_issue_list(); 
-    });//uncomment if an error function is needed
+    });
 };
 
 $(document).ready(function(){
@@ -336,21 +257,17 @@ $(document).ready(function(){
     init();
     
     $('body').on('click tap', '#get_issues_btn', function(){
-        //alert('yoyo');
-        
+
         $('#get_issues_btn').html('Loading');
         get_issue_list_handler();
     });
     
     $('body').on('tap click', '.issue_download', function(){
-    
+        
         var div_id = $(this).attr('id');
         var issue = div_id.slice(6);
         
-        //alert('issue number: '+issue);
-        
         download_handler(issue);
-        //hide_tab();
     });
     
     // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
@@ -358,8 +275,6 @@ $(document).ready(function(){
         var id = $(this).attr('id');
         var filenum = id.slice(1,2);
         var filename = filenum+'.html';
-        //alert(filename)
-        //alert('article tapped');
         render_article(filename);
     });
     
