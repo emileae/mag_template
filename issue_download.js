@@ -79,11 +79,7 @@ function madeDir(d){
 
 function gotFileEntries(fileEntries) {
     //alert("The dir has "+fileEntries.length+" entries."+'-'+foldername);
-
-    var file_in_dir = false;
     
-    // NBNBNBNBNBNBNBNBN Should make some sort of check that all files that are necessary are downloaded, download may be interrupted
-    //alert(localStorage.downloaded);
     if (localStorage.downloaded){
             var str = localStorage.downloaded;
             var n = str.split(",");
@@ -99,19 +95,6 @@ function gotFileEntries(fileEntries) {
             download_issue_files(foldername);
         };
     
-    /*
-    if(fileEntries.length>0){
-        file_in_dir = true;
-    }else if (fileEntries.length<=0){
-        file_in_dir = false;
-    };
-    
-    if (!file_in_dir){
-        download_issue_files(foldername);
-    }else{
-        render_issue(foldername);
-    };
-    */
 };
 
 function onError(e){
@@ -178,13 +161,6 @@ function download_issue_files(issue){
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     if (render){
-                        
-                        /*var string_folder = foldername.toString();
-                        if (localStorage.downloaded == undefined){
-                            localStorage.downloaded = string_folder;
-                        }else{
-                            localStorage.downloaded = localStorage.downloaded+','+string_folder;
-                        };*/
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
@@ -200,7 +176,6 @@ function download_issue_files(issue){
     }, "json")
     .fail(function() { 
         set_issue_list();
-        //render_issue(foldername);
     });
 };
 
