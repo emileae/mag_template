@@ -15,6 +15,7 @@ var setting_issue_list = false;
 function render_article(articlename){
     //alert('try to render');
     //alert(DATADIR);
+    alert(localStorage.downloaded);
     article_name = articlename;
     DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_2);
 };
@@ -177,25 +178,24 @@ function download_issue_files(issue){
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     if (render){
                         
-                        var string_folder = foldername.toString();
+                        /*var string_folder = foldername.toString();
                         if (localStorage.downloaded == undefined){
                             localStorage.downloaded = string_folder;
                         }else{
                             localStorage.downloaded = localStorage.downloaded+','+string_folder;
-                        };
-                        alert(localStorage.downloaded);
+                        };*/
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
                 },onError_test_6);
         };
-        /*
+        
         var string_folder = foldername.toString();
         if (localStorage.downloaded == undefined){
             localStorage.downloaded = string_folder;
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
-        };*/
+        };
     }, "json");
 };
 
@@ -297,7 +297,7 @@ $(document).ready(function(){
     // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
     $(document).on('touchend', '.article', function(){
         var id = $(this).attr('id');
-        var filenum = id.slice(1);
+        var filenum = id.slice(1,3);
         var filename = filenum+'.html';
         alert(filename);
         render_article(filename);
