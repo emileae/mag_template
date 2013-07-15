@@ -56,12 +56,13 @@ function gotFileEntries_new(fileEntries) {
 
 function render_article(articlename){
     alert('try to render');
+    alert(DATADIR);
     article_name = articlename;
-    DATADIR.getFile(article_name, {}, gotFileEntry_new, onError);
+    DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_1);
 };
 
 function gotFileEntry_new(fileEntry) {
-    fileEntry.file(gotFile_new, onError);
+    fileEntry.file(gotFile_new, onError_test_2);
 };
 
 function gotFile_new(file){
@@ -349,7 +350,7 @@ $(document).ready(function(){
     
     $(document).on('touchend', '#a1i4', function(){
         //alert('article tapped');
-        render_article('1');
+        render_article('1.html');
     });
     
     
