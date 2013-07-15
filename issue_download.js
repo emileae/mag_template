@@ -14,7 +14,7 @@ var setting_issue_list = false;
 
 function render_article(articlename){
     //alert('try to render');
-    alert(localStorage.downloaded);
+    //alert(localStorage.downloaded);
     article_name = articlename;
     DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_2);
 };
@@ -83,7 +83,7 @@ function gotFileEntries(fileEntries) {
     var file_in_dir = false;
     
     // NBNBNBNBNBNBNBNBN Should make some sort of check that all files that are necessary are downloaded, download may be interrupted
-    alert(localStorage.downloaded);
+    //alert(localStorage.downloaded);
     if (localStorage.downloaded){
             var str = localStorage.downloaded;
             var n = str.split(",");
@@ -304,7 +304,7 @@ $(document).ready(function(){
         var id = $(this).attr('id');
         var filenum = id.slice(1,2);
         var filename = filenum+'.html';
-        alert(filename);
+        //alert(filename);
         render_article(filename);
     });
     
