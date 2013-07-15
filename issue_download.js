@@ -199,7 +199,7 @@ function download_issue_files(issue){
     }, "json")
     .fail(function() { 
         set_issue_list();
-        render_issue(foldername);
+        //render_issue(foldername);
     });
 };
 
