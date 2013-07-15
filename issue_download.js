@@ -347,12 +347,15 @@ $(document).ready(function(){
         //hide_tab();
     });
     
-    
-    $(document).on('touchend', '#a1i4', function(){
+    // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
+    $(document).on('touchend', '.article', function(){
+        var id = $(this).attr('id');
+        var filenum = id.slice(1,2);
+        var filename = filenum+'.html';
+        alert(filename)
         //alert('article tapped');
-        render_article('1.html');
+        render_article(filename);
     });
-    
     
 });
 
