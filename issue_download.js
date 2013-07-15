@@ -14,7 +14,6 @@ var setting_issue_list = false;
 
 function render_article(articlename){
     //alert('try to render');
-    //alert(DATADIR);
     alert(localStorage.downloaded);
     article_name = articlename;
     DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_2);
@@ -42,7 +41,7 @@ function readAsText_new(file) {
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
-           //close_menu();
+           // close_menu();
         };
         
         close_menu();
