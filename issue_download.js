@@ -82,6 +82,22 @@ function gotFileEntries(fileEntries) {
     
     // NBNBNBNBNBNBNBNBN Should make some sort of check that all files that are necessary are downloaded, download may be interrupted
     
+    if (localStorage.downloaded && fileEntries.length>0){
+            var str = localStorage.downloaded;
+            var n = str.split(",");
+            var i_string = i.toString();
+            var in_array = $.inArray(i_string,n);
+            
+            if (in_array > -1){
+                render_issue(foldername);
+            }else{
+                download_issue_files(foldername);
+            };
+        }else if (!localStorage.downloaded && fileEntries.length<=0){
+            download_issue_files(foldername);
+        };
+    
+    /*
     if(fileEntries.length>0){
         file_in_dir = true;
     }else if (fileEntries.length<=0){
@@ -93,7 +109,7 @@ function gotFileEntries(fileEntries) {
     }else{
         render_issue(foldername);
     };
-    
+    */
 };
 
 function onError(e){
@@ -273,7 +289,7 @@ $(document).ready(function(){
     // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
     $(document).on('touchend', '.article', function(){
         var id = $(this).attr('id');
-        var filenum = id.slice(1,2);
+        var filenum = id.slice(1);
         var filename = filenum+'.html';
         render_article(filename);
     });
