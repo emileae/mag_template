@@ -75,7 +75,7 @@ function readAsText_new(file) {
         
         $('.scroller').html(evt.target.result);
         pageScroll.refresh();
-        myScroll.scrollTo(0, 0, 200);
+        pageScroll.scrollTo(0, 0, 200);
         
         //setting the src url for all images
         var imgs = document.getElementsByTagName("img");
