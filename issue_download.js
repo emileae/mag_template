@@ -226,7 +226,7 @@ function set_issue_list(){
             var in_array = $.inArray(i_string,n);
             
             if (in_array > -1){
-                $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
+                $('#menu_content').append('<div class="issue_download downloaded" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             }else{
                 $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             };
