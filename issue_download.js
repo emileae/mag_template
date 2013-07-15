@@ -86,9 +86,9 @@ function gotFileEntries(fileEntries) {
     if (localStorage.downloaded){
             var str = localStorage.downloaded;
             var n = str.split(",");
-            var i_string = i.toString();
+            var i_string = foldername.toString();
             var in_array = $.inArray(i_string,n);
-            
+            alert(in_array);
             if (in_array > -1){
                 render_issue(foldername);
             }else{
