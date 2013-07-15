@@ -82,8 +82,8 @@ function gotFileEntries(fileEntries) {
     var file_in_dir = false;
     
     // NBNBNBNBNBNBNBNBN Should make some sort of check that all files that are necessary are downloaded, download may be interrupted
-    
-    if (localStorage.downloaded && fileEntries.length>0){
+    alert(localStorage.downloaded);
+    if (localStorage.downloaded){
             var str = localStorage.downloaded;
             var n = str.split(",");
             var i_string = i.toString();
@@ -94,7 +94,7 @@ function gotFileEntries(fileEntries) {
             }else{
                 download_issue_files(foldername);
             };
-        }else if (localStorage.downloaded == undefined || fileEntries.length<=0){
+        }else{
             download_issue_files(foldername);
         };
     
