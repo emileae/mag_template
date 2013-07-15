@@ -55,8 +55,8 @@ function gotFileEntries_new(fileEntries) {
 */
 
 function render_article(articlename){
-    alert('try to render');
-    alert(DATADIR);
+    //alert('try to render');
+    //alert(DATADIR);
     article_name = articlename;
     DATADIR.getFile(article_name, {}, gotFileEntry_new, onError_test_1);
 };
@@ -75,6 +75,7 @@ function readAsText_new(file) {
         
         $('.scroller').html(evt.target.result);
         pageScroll.refresh();
+        myScroll.scrollTo(0, 0, 200);
         
         //setting the src url for all images
         var imgs = document.getElementsByTagName("img");
@@ -352,7 +353,7 @@ $(document).ready(function(){
         var id = $(this).attr('id');
         var filenum = id.slice(1,2);
         var filename = filenum+'.html';
-        alert(filename)
+        //alert(filename)
         //alert('article tapped');
         render_article(filename);
     });
