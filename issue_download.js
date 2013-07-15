@@ -42,8 +42,10 @@ function readAsText_new(file) {
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
-           close_menu();
-        }
+           //close_menu();
+        };
+        
+        close_menu();
         
     };
     reader.readAsText(file);
