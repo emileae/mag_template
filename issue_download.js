@@ -94,7 +94,7 @@ function gotFileEntries(fileEntries) {
             }else{
                 download_issue_files(foldername);
             };
-        }else if (!localStorage.downloaded && fileEntries.length<=0){
+        }else if (localStorage.downloaded == undefined || fileEntries.length<=0){
             download_issue_files(foldername);
         };
     
@@ -196,7 +196,11 @@ function download_issue_files(issue){
         }else{
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
         };
-    }, "json");
+    }, "json")
+    .fail(function() { 
+        set_issue_list();
+        render_issue(foldername);
+    });
 };
 
 function render_issue(foldername){
