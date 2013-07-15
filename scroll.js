@@ -12,6 +12,8 @@ if ($('.page').length){
     pageScroll = new iScroll('wrapper_pg', {hScrollbar: false, vScrollbar: true, lockDirection: true });
 };
 
+menuScroll = new iScroll('issue_container', {hScrollbar: false, vScrollbar: false, lockDirection: true });
+
 
 /*
 var numPages = $('.page').length;

@@ -73,7 +73,7 @@ function readAsText_new(file) {
     var reader = new FileReader();
     reader.onloadend = function(evt) {
         
-        $('.scroller').html(evt.target.result);
+        $('#content').html(evt.target.result);
         pageScroll.refresh();
         pageScroll.scrollTo(0, 0, 200);
         
@@ -260,7 +260,11 @@ function readAsText(file) {
     reader.onloadend = function(evt) {
         
         //$('#issue_container').append(evt.target.result);
+        
+        $('.article_list').html("");
+        
         $('#article_list_'+foldername).html(evt.target.result);
+        menuScroll.refresh();
         /*$('.scroller').html(evt.target.result);
         pageScroll.refresh();
         
@@ -287,7 +291,7 @@ function init() {
 };
 
 function set_issue_list(){
-    $('#issue_container').html("");
+    $('#menu_content').html("");
     for(var i = 0; i<= localStorage.issue_list; i++){
         
         $('#get_issues_btn').html('Refresh Issues');
@@ -300,16 +304,17 @@ function set_issue_list(){
             var in_array = $.inArray(i_string,n);
             
             if (in_array > -1){
-                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
+                $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             }else{
-                $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
+                $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
             };
         }else{
             //alert('no downloads');
-            $('#issue_container').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
+            $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
         };
 
     };
+    menuScroll.refresh();
 };
 
 
