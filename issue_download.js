@@ -89,7 +89,7 @@ function gotFileEntries(fileEntries) {
             var n = str.split(",");
             var i_string = foldername.toString();
             var in_array = $.inArray(i_string,n);
-            alert(in_array);
+            //alert(in_array);
             if (in_array > -1){
                 render_issue(foldername);
             }else{
