@@ -348,7 +348,7 @@ $(document).ready(function(){
     });
     
     
-    $('body').on('tap', '#a1i4', function(){
+    $(document).on('tap', '#a1i4', function(){
         alert('article tapped');
         //render_article('4', '1');
     });
