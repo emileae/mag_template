@@ -259,7 +259,6 @@ function readAsText(file) {
         
         //$('#issue_container').append(evt.target.result);
         $('#article_list_'+foldername).html(evt.target.result);
-        alert($('#a1i4').html());
         /*$('.scroller').html(evt.target.result);
         pageScroll.refresh();
         
@@ -348,7 +347,7 @@ $(document).ready(function(){
     });
     
     
-    $(document).on('tap', '#a1i4', function(){
+    $(document).on('touchend', '#a1i4', function(){
         alert('article tapped');
         //render_article('4', '1');
     });
