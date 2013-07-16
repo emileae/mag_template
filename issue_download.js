@@ -251,8 +251,12 @@ function get_issue_list_handler (){
         set_issue_list();
 
     })
-    .fail(function() { 
-        set_issue_list(); 
+    .fail(function() {
+        if (!localStorage.issue_list){
+            $('#menu_content').html('Cannot download issue list<br>Please connect to the internet');
+        }else{
+            set_issue_list();
+        };
     });
 };
 
