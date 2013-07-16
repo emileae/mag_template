@@ -275,6 +275,7 @@ z-index: 2000;
 
 #toc
 {
+-webkit-transform: translate3d(0px,0px,0px);
 background-color: rgb(100,100,100);
 position: absolute;
 z-index: 2001;
