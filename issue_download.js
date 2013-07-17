@@ -151,25 +151,33 @@ function download_issue_files(issue){
         var render = false;
 
         //for (var i=0; i < files.length; i++){
-        for (var i=0; i < files.length;){
+        for (var i=0; i < files.length; ){
             var data_key = files[i];
             //alert('i initial '+i);
             if (i == (files.length-1)){
                 render = true;
             };
             
-            var ft = new FileTransfer();
+            var carry_on = download_to_device(i);
+            
+            if (carry_on == 'carry_on'){
+                i++
+            }else{
+                i=files.length;
+            };
+            
+            /*var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     //alert('i before '+i);
                     i++;
                     alert('downloaded file '+i);
-                    /*if (render){
-                        alert('rendering');
-                        set_issue_list();//adds articles once all files are downloaded
-                        render_issue(foldername);
-                    };*/
-                },onError_test_6);
+                    //if (render){
+                    //    alert('rendering');
+                    //    set_issue_list();//adds articles once all files are downloaded
+                    //    render_issue(foldername);
+                    //};
+                },onError_test_6);*/
                 
                 if (render){
                     alert('rendering');
@@ -188,6 +196,15 @@ function download_issue_files(issue){
     .fail(function() { 
         set_issue_list();
     });
+};
+
+function download_to_device(i){
+    var ft = new FileTransfer();
+    var dlPath = DATADIR.fullPath + "/" + data_key;
+    ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
+        alert('carry_on');
+        return 'carry_on';
+    },onError_test_6);
 };
 
 function render_issue(foldername){
