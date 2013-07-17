@@ -165,7 +165,7 @@ function download_issue_files(issue){
                     //i++;
                     //alert('downloaded file '+i);
                     if (render){
-                        alert('rendering');
+                        //alert('rendering');
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
