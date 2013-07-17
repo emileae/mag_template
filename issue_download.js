@@ -150,7 +150,8 @@ function download_issue_files(issue){
         
         var render = false;
 
-        for (var i=0; i < files.length; i++){
+        //for (var i=0; i < files.length; i++){
+        for (var i=0; i < files.length;){
             var data_key = files[i];
             
             if (i == (files.length-1)){
@@ -160,6 +161,7 @@ function download_issue_files(issue){
             var ft = new FileTransfer();
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
+                    i++;
                     if (render){
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
