@@ -164,12 +164,18 @@ function download_issue_files(issue){
                     //alert('i before '+i);
                     i++;
                     alert('downloaded file '+i);
-                    if (i == files.length-1){
+                    /*if (render){
                         alert('rendering');
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
-                    };
+                    };*/
                 },onError_test_6);
+                
+                if (render){
+                    alert('rendering');
+                    set_issue_list();//adds articles once all files are downloaded
+                    render_issue(foldername);
+                };
         };
         
         var string_folder = foldername.toString();
