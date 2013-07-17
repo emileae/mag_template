@@ -163,7 +163,7 @@ function download_issue_files(issue){
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
                     //alert('i before '+i);
                     i++;
-                    //alert('i after '+i);
+                    alert('i after '+i);
                     if (i == files.length){
                         alert('rendering');
                         set_issue_list();//adds articles once all files are downloaded
