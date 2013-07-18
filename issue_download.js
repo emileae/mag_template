@@ -134,12 +134,12 @@ function onError_test_6(e){
         localStorage.downloaded = localStorage.downloaded+','+elem
     };
     set_issue_list();
-    alert("ERROR TEST 6"+localStorage.downloaded);
+    //alert("ERROR TEST 6");
 };
 
 function onDeviceReady() {
     get_issue_list_handler ()
-}
+};
 
 function download_handler(issue){
     //alert('download handler'+issue);
@@ -237,12 +237,12 @@ function init() {
 
 function set_issue_list(){
     $('#menu_content').html("");
-    
+    var num_issues = parseInt(localStorage.issue_list);
     if(no_connection){
         no_connection = false;
         $('#menu_content').html('please connect to the internet<br>tap<br>"Refresh Issues"<br>to see issue list');
     }else{
-        for(var i = 0; i<= localStorage.issue_list; i++){
+        for(var i = 0; i<= num_issues; i++){
             
             $('#get_issues_btn').html('Refresh Issues');
             
@@ -264,28 +264,6 @@ function set_issue_list(){
         };
         menuScroll.refresh();
     };
-    
-    /*for(var i = 0; i<= localStorage.issue_list; i++){
-        
-        $('#get_issues_btn').html('Refresh Issues');
-        
-        if (localStorage.downloaded){
-            var str = localStorage.downloaded;
-            var n = str.split(",");
-            var i_string = i.toString();
-            var in_array = $.inArray(i_string,n);
-            
-            if (in_array > -1){
-                $('#menu_content').append('<div class="issue_download downloaded" id="issue_'+i+'">Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
-            }else{
-                $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div><div id="article_list_'+i+'" class="article_list"></div>');
-            };
-        }else{
-            $('#menu_content').append('<div class="issue_download" id="issue_'+i+'">Download Issue '+i+'</div>');
-        };
-
-    };
-    menuScroll.refresh();*/
     
 };
 
