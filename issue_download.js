@@ -163,6 +163,8 @@ function download_issue_files(issue){
         };
         
         var render = false;
+        
+        var $status = $('#issue_'+foldername)
 
         for (var i=0; i < files.length; i++){
             var data_key = files[i];
@@ -171,6 +173,20 @@ function download_issue_files(issue){
             };
             
             var ft = new FileTransfer();
+
+                ft.onprogress = function(progressEvent) {
+                    if (progressEvent.lengthComputable) {
+                        var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+                        $status.html(perc + "% loaded...")
+                    } else {
+                        if($status.innerHTML == "") {
+                            $status.innerHTML = "Loading";
+                        } else {
+                            $status.innerHTML += ".";
+                        }
+                    }
+                };
+                
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
 
