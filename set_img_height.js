@@ -17,7 +17,9 @@ $(window).load(function(){
 function set_img_heights(){
     $('img').load( function() {
         setTimeout(function(){
+            alert($(this).height+'px');
             $(this).css('height', $(this).height+'px');
+            pageScroll.refresh();
         }, 0);
     });
 };
