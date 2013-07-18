@@ -33,6 +33,7 @@ function readAsText_new(file) {
     reader.onloadend = function(evt) {
         
         $('#content').html(evt.target.result);
+        set_img_heights();
         pageScroll.refresh();
         pageScroll.scrollTo(0, 0, 200);
         
