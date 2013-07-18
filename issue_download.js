@@ -97,6 +97,7 @@ function gotFileEntries(fileEntries) {
     
 };
 
+
 function onError(e){
     alert("ERROR");
     //alert(e.target.error.code);
@@ -121,7 +122,17 @@ function onError_test_5(e){
     alert("ERROR TEST 5");
 };
 function onError_test_6(e){
-    alert("ERROR TEST 6");
+    var str = localStorage.downloaded;
+    var n = str.split(",");
+    var i_string = foldername.toString();
+    var index = n.indexOf(i_string);
+    n.splice(index, 1);
+    localStorage.downloaded = "";
+    for (var i=0; n.length; i++){
+        var elem = n[i];
+        localStorage.downloaded = localStorage.downloaded+','+elem
+    };
+    alert("ERROR TEST 6"+localStorage.downloaded);
 };
 
 function onDeviceReady() {
@@ -257,8 +268,10 @@ function get_issue_list_handler (){
     })
     .fail(function() {
         if (!localStorage.issue_list){
+            $('#get_issues_btn').html('Refresh Issues');
             $('#menu_content').html('Cannot download issue list<br>Please connect to the internet');
         }else{
+            $('#get_issues_btn').html('Refresh Issues');
             set_issue_list();
         };
     });
