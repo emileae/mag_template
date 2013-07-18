@@ -176,7 +176,7 @@ function download_issue_files(issue){
 
                 ft.onprogress = function(progressEvent) {
                     if (progressEvent.lengthComputable) {
-                        var perc = Math.floor(progressEvent.loaded / progressEvent.total * 100);
+                        var perc = Math.floor((progressEvent.loaded / progressEvent.total) * 100);
                         $status.html(perc + "% loaded...")
                     } else {
                         if($status.innerHTML == "") {
