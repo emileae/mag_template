@@ -9,6 +9,7 @@ var knownfiles = [];
 var filename = "";
 var foldername = "";
 var setting_issue_list = false;
+var no_connection = false;
 
 // START FETCH DATADIR FUNCTION
 
@@ -189,7 +190,8 @@ function download_issue_files(issue){
             localStorage.downloaded = localStorage.downloaded+','+string_folder;
         };
     }, "json")
-    .fail(function() { 
+    .fail(function() {
+        no_connection = true;
         set_issue_list();
     });
 };
@@ -234,6 +236,12 @@ function init() {
 
 function set_issue_list(){
     $('#menu_content').html("");
+    
+    if(no_connection){
+        no_connection = false;
+        $('#article_list_'+foldername).html('please connect to the internet');
+    };
+    
     for(var i = 0; i<= localStorage.issue_list; i++){
         
         $('#get_issues_btn').html('Refresh Issues');
