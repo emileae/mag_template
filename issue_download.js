@@ -325,7 +325,7 @@ $(document).ready(function(){
     // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
     $(document).on('touchend', '.article', function(){
         var id = $(this).attr('id');
-        var filenum = id.slice(1,2);
+        var filenum = id.slice(1);
         var filename = filenum+'.html';
         //alert(filename);
         render_article(filename);
