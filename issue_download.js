@@ -239,7 +239,7 @@ function set_issue_list(){
     
     if(no_connection){
         no_connection = false;
-        $('#article_list_'+foldername).html('please connect to the internet');
+        $('#menu_content').html('please connect to the internet');
     }else{
         for(var i = 0; i<= localStorage.issue_list; i++){
             
