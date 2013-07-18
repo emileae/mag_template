@@ -1,5 +1,5 @@
 
-var page1Scroll="";
+var menuScroll="";
 
 $(document).ready(function(){//replaced with deviceready phonegap function
 
