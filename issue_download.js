@@ -162,8 +162,8 @@ function download_issue_files(issue){
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
 
                     files_downloaded += 1;
-                    alert(files_downloaded);
-                    if (files_downloaded == 6){
+                    //alert(files_downloaded);
+                    if (files_downloaded == files.length){
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
