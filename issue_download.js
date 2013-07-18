@@ -45,7 +45,7 @@ function readAsText_new(file) {
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            // close_menu();
         };
-        
+        $('#loading_overlay').hide();
         close_menu();
         
     };
@@ -325,6 +325,7 @@ $(document).ready(function(){
     
     // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
     $(document).on('touchend', '.article', function(){
+        $('#loading_overlay').show();
         var id = $(this).attr('id');
         var filenum = id.slice(1);
         var filename = filenum+'.html';
