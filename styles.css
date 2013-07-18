@@ -287,9 +287,8 @@ left: -50%;
 #loading_overlay
 {
 position: absolute;
-z-index: 1001;
 top: 50%;
-left: 40%;
+background-color: red;
 color: green;
 display: none;
 }
