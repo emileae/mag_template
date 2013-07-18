@@ -19,9 +19,8 @@ function set_img_heights(){
         setTimeout(function(){
             //alert($(this).height+'px');
             $(this).css('height', $(this).height+'px');
-            //pageScroll.refresh();
+            pageScroll.refresh();
+            pageScroll.scrollTo(0, 0, 200);
         }, 0);
     });
-    pageScroll.refresh();
-    pageScroll.scrollTo(0, 0, 200);
 };
