@@ -133,6 +133,7 @@ function onError_test_6(e){
         var elem = n[i];
         localStorage.downloaded = localStorage.downloaded+','+elem
     };
+    set_issue_list();
     alert("ERROR TEST 6"+localStorage.downloaded);
 };
 
@@ -239,7 +240,7 @@ function set_issue_list(){
     
     if(no_connection){
         no_connection = false;
-        $('#menu_content').html('please connect to the internet');
+        $('#menu_content').html('please connect to the internet<br>tap<br>"Refresh Issues"<br>to see issue list');
     }else{
         for(var i = 0; i<= localStorage.issue_list; i++){
             
