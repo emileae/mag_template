@@ -37,14 +37,21 @@ function readAsText_new(file) {
         pageScroll.refresh();
         pageScroll.scrollTo(0, 0, 200);
         
+        var $native_imgs = $('.native_img');
+        
         //setting the src url for all images
         var imgs = document.getElementsByTagName("img");
+        
+        for (var i=0; i<$native_imgs.length; i++){
+            imgs.splice($native_imgs[i], 1);
+        };
         
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
            imgs[i].src = DATADIR.fullPath+'/'+file_name;
            // close_menu();
         };
+        
         $('#loading_span').remove();
         close_menu();
         
@@ -64,8 +71,8 @@ function readAsText_new(file) {
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
     //alert('find or create Directory'+'-'+foldername);
-    //fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
-    fileSystem.root.getDirectory("magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
+    fileSystem.root.getDirectory("Android/data/magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
+    //fileSystem.root.getDirectory("magtemplate.com.scknss.www",{create:true, exclusive: false}, function(appID){
         appID.getDirectory(foldername, {create: true, exclusive: false}, madeDir, onError_test_2)
     },onError_test_1);
 };
