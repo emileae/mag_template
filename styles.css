@@ -259,8 +259,9 @@ font-size:2em;
 {
 font-size:1.5em;
 }
-.article
+.article/*NBNBNBNBNBNBNBNBNBNBNBNBNBNBNBN this is double .article is for title in slide out menu in article_list file and in framework*/
 {
+position: relative;
 left: 5%;
 font-size: 1em;
 }

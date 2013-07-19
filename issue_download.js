@@ -37,18 +37,15 @@ function readAsText_new(file) {
         pageScroll.refresh();
         pageScroll.scrollTo(0, 0, 200);
         
-        var $native_imgs = $('.native_img');
-        
         //setting the src url for all images
         var imgs = document.getElementsByTagName("img");
         
-        for (var i=0; i<$native_imgs.length; i++){
-            imgs.splice($native_imgs[i], 1);
-        };
-        
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
-           imgs[i].src = DATADIR.fullPath+'/'+file_name;
+           if (img[i].getAttribute("className") != 'native_img'){
+            imgs[i].src = DATADIR.fullPath+'/'+file_name;
+           };
+           //imgs[i].src = DATADIR.fullPath+'/'+file_name;
            // close_menu();
         };
         
