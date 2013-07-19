@@ -16,4 +16,12 @@ $(document).ready(function(){
         $(this).css('background-color', initial_btn_color);
     });
     
+    $('body').on('touchstart mousedown', '.article', function(){
+        $(this).css('background-color', touched_btn_color);
+    });
+    
+    $('body').on('touchend mouseup', '.article', function(){
+        $(this).css('background-color', initial_btn_color);
+    });
+    
 });
