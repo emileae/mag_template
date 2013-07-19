@@ -38,14 +38,13 @@ function readAsText_new(file) {
         pageScroll.scrollTo(0, 0, 200);
         
         //setting the src url for all images
-        var imgs = document.getElementsByTagName("img");
+        //var imgs = document.getElementsByTagName("img");
+        
+        var imgs = $('img').not('.native_img');
         
         for(var i = 0; i < imgs.length; i++){
            var file_name = imgs[i].getAttribute('id');
-           if (img[i].getAttribute("className") != 'native_img'){
-            imgs[i].src = DATADIR.fullPath+'/'+file_name;
-           };
-           //imgs[i].src = DATADIR.fullPath+'/'+file_name;
+           imgs[i].src = DATADIR.fullPath+'/'+file_name;
            // close_menu();
         };
         
