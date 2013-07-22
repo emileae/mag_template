@@ -33,6 +33,9 @@ $(document).ready(function(){
                 </div>\
             ');
             
+            var $img_popup = $(this).children('.img_popup');
+            $img_popup.children('img').css('width', '100%');
+            
             menu_active = false;
             
             imgScroll = new iScroll('popup_scroll', {hScrollbar: false, vScrollbar: false,  zoom: true, zoomMax: 10 });
