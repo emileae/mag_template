@@ -33,6 +33,8 @@ $(document).ready(function(){
                 </div>\
             ');
             
+            menu_active = false;
+            
             imgScroll = new iScroll('popup_scroll', {hScrollbar: false, vScrollbar: false,  zoom: true, zoomMax: 10 });
             
         }else{
@@ -50,6 +52,7 @@ $(document).ready(function(){
     $('body').on('tap click', '#full_overlay', function(){
         $('#full_overlay').remove();
         $('#overlay_content').remove();
+        menu_active = true;
         popupScroll.destroy();
         popupScroll = null;
         imgScroll.destroy();
@@ -58,6 +61,7 @@ $(document).ready(function(){
     $('body').on('tap click', '.close_x', function(){
         $('#full_overlay').remove();
         $('#overlay_content').remove();
+        menu_active = true;
         popupScroll.destroy();
         popupScroll = null;
         imgScroll.destroy();
