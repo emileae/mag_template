@@ -43,6 +43,7 @@ $(document).ready(function(){
             //setting image and overlay heights after image load
             $img.load( function() {
                 setTimeout(function(){
+                    alert($(this).height);
                     $('#overlay_content').css('height', $(this).height+'px');
                 }, 0);
             });
