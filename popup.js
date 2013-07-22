@@ -39,6 +39,7 @@ $(document).ready(function(){
             var $img = $scroller.children('img');
             
             $img.css('width', '100%');
+            alert($img.height());
             
             menu_active = false;
             
