@@ -43,7 +43,7 @@ var toc_shown = false;
             };
         }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
-            if (menu_pos == "open" && menu_active == true){
+            if (menu_pos == "open"){
                 hide_tab();
                 menu_pos = "closed";
             };
