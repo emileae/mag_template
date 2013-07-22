@@ -5,7 +5,10 @@ $(document).ready(function(){
     
 
     $('body').on('tap click', '#toc_icon_show', function (){
-        show_tab();
+        //show_tab();
+        if (menu_active == true){
+            show_tab();
+        };
     });
     
     $('body').on('touchstart mousedown', '.btn', function(){

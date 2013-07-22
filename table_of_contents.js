@@ -63,12 +63,15 @@ var toc_shown = false;
     // ################## END  meny code  ###########
     
     /*var toc_shown = false;*/
-    
+    /*
     $('body').on('tap click', '#toc_icon', function(){
-        show_tab();
+        //show_tab();
+        if (menu_active == true){
+                show_tab();
+            };
        // menu_pos == "open"
     });
-    
+    */
     $('body').on('tap click', '#toc_icon_hide', function(){
         hide_tab();
         //menu_pos == "closed"
