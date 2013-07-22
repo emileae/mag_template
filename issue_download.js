@@ -55,14 +55,7 @@ function readAsText_new(file) {
     reader.readAsText(file);
 };
 
-
-
-
-
-
 // END FETCH DATADIR FUNCTION
-
-
 
 //A ton of callback function needed to store files on sd card persistent storage on device
 function onFSSuccess(fileSystem) {
@@ -100,7 +93,6 @@ function gotFileEntries(fileEntries) {
         }else{
             download_issue_files(foldername);
         };
-    
 };
 
 
@@ -156,8 +148,6 @@ function download_issue_files(issue){
     //alert('getting file dict to download');
     $('#issue_'+issue).html('Loading');
     $.get("http://eaeissues.appspot.com/getfilelist/"+issue+"", {}, function(data) {
-        //function(data){returns list of files to download}
-        
         var files = [];
         var files_downloaded = 0;
         
@@ -191,20 +181,16 @@ function download_issue_files(issue){
                         }
                     }
                 };
-                
                 var dlPath = DATADIR.fullPath + "/" + data_key;
                 ft.download("http://eaeissues.appspot.com/getfile/" + data[data_key], dlPath, function(){
-
                     files_downloaded += 1;
                     //alert(files_downloaded);
                     if (files_downloaded == files.length){
                         set_issue_list();//adds articles once all files are downloaded
                         render_issue(foldername);
                     };
-                    
                 },onError_test_6);
         };
-        
         var string_folder = foldername.toString();
         if (localStorage.downloaded == undefined){
             localStorage.downloaded = string_folder;
@@ -251,7 +237,6 @@ function close_menu(){
     //table_of_contents script needs to be at bottom of html body instead of in document ready...
 };
 
-//download recent issue list if user is online
 function init() {
     document.addEventListener("deviceready", onDeviceReady, true);
 };
@@ -285,7 +270,6 @@ function set_issue_list(){
         };
         menuScroll.refresh();
     };
-    
 };
 
 
@@ -313,25 +297,20 @@ $(document).ready(function(){
     init();
     
     $('body').on('click tap', '#get_issues_btn', function(){
-
         $('#get_issues_btn').html('Loading');
         get_issue_list_handler();
     });
     
     $('body').on('tap click', '.issue_download', function(){
-        
         var div_id = $(this).attr('id');
         var issue = div_id.slice(6);
-        
         download_handler(issue);
     });
     
-    // !!!!!!!!!!!!!!!!!NBNBNNBNBNBNBNNBNBNBNBBNBNBNBN consider formatting the id so that can include double digit characters i.e. only slice first character
     $(document).on('touchend', '.article', function(){
         var id = $(this).attr('id');
         var filenum = id.slice(1);
         var filename = filenum+'.html';
-        //alert(filename);
         $(this).append('<span id="loading_span"> -Loading</span>');
         render_article(filename);
     });
