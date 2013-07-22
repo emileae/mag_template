@@ -40,14 +40,6 @@ $(document).ready(function(){
             
             $img.css('width', '100%');
             
-            //setting image and overlay heights after image load
-            $img.load( function() {
-                setTimeout(function(){
-                    alert($(this).height);
-                    $('#overlay_content').css('height', $(this).height+'px');
-                }, 0);
-            });
-            
             menu_active = false;
             
             imgScroll = new iScroll('popup_scroll', {hScrollbar: false, vScrollbar: false,  zoom: true, zoomMax: 10 });
