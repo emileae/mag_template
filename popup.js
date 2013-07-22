@@ -40,6 +40,8 @@ $(document).ready(function(){
             
             $img.css('width', '100%');
             alert($img.height());
+            var div_height = ($img.height())
+            $('#overlay_content').css('height', div_height);
             
             menu_active = false;
             
