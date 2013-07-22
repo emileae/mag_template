@@ -41,7 +41,7 @@ $(document).ready(function(){
             $img.css('width', '100%');
             alert($img.height());
             var div_height = ($img.height())
-            $('#overlay_content').css('height', div_height);
+            $('#overlay_content').css('height', div_height+'px');
             
             menu_active = false;
             
