@@ -33,8 +33,9 @@ $(document).ready(function(){
                 </div>\
             ');
             
-            var $img_popup = $(this).children('.img_popup');
-            $img_popup.children('img').css('width', '100%');
+            var $popupscroll = $('#popup_scroll');
+            var $scroller = $popupscroll.children('.scroller');
+            $scroller.children('img').css('width', '100%');
             
             menu_active = false;
             
