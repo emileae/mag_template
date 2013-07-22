@@ -33,9 +33,19 @@ $(document).ready(function(){
                 </div>\
             ');
             
+            //this sets the img width to 100%
             var $popupscroll = $('#popup_scroll');
             var $scroller = $popupscroll.children('.scroller');
-            $scroller.children('img').css('width', '100%');
+            var $img = $scroller.children('img');
+            
+            $img.css('width', '100%');
+            
+            //setting image and overlay heights after image load
+            $img.load( function() {
+                setTimeout(function(){
+                    $('#overlay_content').css('height', $(this).height+'px');
+                }, 0);
+            });
             
             menu_active = false;
             
