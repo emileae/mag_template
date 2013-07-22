@@ -38,10 +38,14 @@ $(document).ready(function(){
             var $scroller = $popupscroll.children('.scroller');
             var $img = $scroller.children('img');
             
-            $img.css('width', '100%');
+            $img.css('width', '90%');
             alert($img.height());
-            var div_height = ($img.height())
+            var div_height = ($img.height())+20;
             $('#overlay_content').css('height', div_height+'px');
+            $('#overlay_content').css('padding-top', '10px');
+            $('#overlay_content').css('padding-bottom', '10px');
+            $('#overlay_content').css('padding-left', '5%');
+            $('#overlay_content').css('padding-right', '5%');
             
             menu_active = false;
             
