@@ -4,23 +4,10 @@ var initial_left_pos = toc_pos.left;
 current_pos = parseInt(current_pos);
 initial_left_pos = parseInt(initial_left_pos);
 var menu_pos = "closed";
+var menu_active = true;
 var toc_shown = false;
-
-
-//$(document).ready(function(){
-
-    /*var toc_pos = $('#toc').position();
-    var current_pos = toc_pos.left;
-    var initial_left_pos = toc_pos.left;
-    current_pos = parseInt(current_pos);
-    initial_left_pos = parseInt(initial_left_pos);*/
     
     var swipe_direction = "";
-    
-    /*var menu_pos = "closed";*/
-    
-    //var x = document.getElementById("touchmove_track");
-    //x.innerHTML=current_pos;
     
     var initial_touchX = "";
     var initial_touchY = "";
@@ -50,13 +37,13 @@ var toc_shown = false;
         
         if (diff > 0 && diff > 20 && diffY < 20){
             swipe_direction = 'right';
-            if (menu_pos == "closed"){
+            if (menu_pos == "closed" && menu_active == true){
                 show_tab();
                 menu_pos = "open";
             };
         }else if (diff < 0 && diff < -20 && diffY < 20){
             swipe_direction = 'left';
-            if (menu_pos == "open"){
+            if (menu_pos == "open" && menu_active == true){
                 hide_tab();
                 menu_pos = "closed";
             };
@@ -120,7 +107,7 @@ var toc_shown = false;
         current_pos = initial_left_pos;
     };
     
-    
+    /*
     $('#toc_1').on('tap click', function(){
         setTimeout(function () {
         page1Scroll.scrollToElement('li:nth-child(1)', 100);
@@ -145,8 +132,6 @@ var toc_shown = false;
         menu_pos = "closed";
         //meny.close();
     });
-
-
-//});
+    */
 
 
