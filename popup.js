@@ -35,20 +35,6 @@ $(document).ready(function(){
             
             menu_active = false;
             
-            var $img_popup = $(this).children('img_popup')
-            var img = $img_popup.children('img')
-            var width = img.width();
-            var height = img.height();
-            
-            var $popup_scroll = $('#popup_scroll');
-            var $scroller = $popup_scroll.children('.scroller');
-            
-            $popup_scroll.css('width',width);
-            $popup_scroll.css('height',height);
-            
-            $scroller.css('width',width);
-            $scroller.css('height',height);
-            
             imgScroll = new iScroll('popup_scroll', {hScrollbar: false, vScrollbar: false,  zoom: true, zoomMax: 10 });
             
         }else{
